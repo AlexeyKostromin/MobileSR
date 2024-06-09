@@ -2,10 +2,8 @@ package lib;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
-public class AppiumConfig {
+public class zAppiumConfig {
 
 //    private static Map<String, URL> appiumUrls;
 //
