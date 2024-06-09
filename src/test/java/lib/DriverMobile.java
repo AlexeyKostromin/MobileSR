@@ -87,7 +87,7 @@ public class DriverMobile implements WebDriverProvider {
 
     //https://github.com/wikimedia/apps-android-wikipedia/releases/download/latest/app-alpha-universal-release.apk
     private String getAppPath() {
-        String appVersion = "com.sportradar.coaching.mobile-1.2.0-production.apk";
+        String appVersion = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
 //        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia" +
 //                "/releases/download/latest/" + appVersion;
         String appPath = "src/test/resources/apps/" + appVersion;
