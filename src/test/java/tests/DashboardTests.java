@@ -16,8 +16,8 @@ public class DashboardTests extends TestBase {
 
     @Test
     @Tag("android_local")
-    @DisplayName("Search item")
-    void successfulSearchTest() {
+    @DisplayName("Login to home page")
+    void LoginToDashboardPageTest() {
         loginPage.allowPermissions();
         loginPage.updateLater();
         loginPage.loginWithCredentials(USERNAME, PASSWORD);
