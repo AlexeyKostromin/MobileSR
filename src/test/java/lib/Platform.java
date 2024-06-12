@@ -11,7 +11,7 @@ public class Platform {
     private final static String RUNTIME_ENV_LOCALHOST = "localHostRuntimeEnv";
     private final static String RUNTIME_ENV_WINDOWS = "windowsRuntimeEnv";
     private final static String RUNTIME_ENV_MAC = "macRuntimeEnv";
-
+    private final static String MAC_APPIUM_URL = "http://192.168.0.202:4723/";
 
     private static Platform instance;
 
@@ -30,6 +30,7 @@ public class Platform {
         PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
         RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_LOCALHOST);
         APPIUM_URL = System.getProperty("appiumURL", "http://127.0.0.1:4723/");
+
     }
 
 //    private String setAppiumUrl() {
