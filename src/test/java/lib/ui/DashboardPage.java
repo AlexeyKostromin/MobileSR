@@ -48,6 +48,13 @@ public class DashboardPage {
         MENU_BLOCK.click();
         MENU_DASHBOARD.click();
     }
+    public void openEdits() {
+        MENU_EDITS.click();
+    }
+
+    public void openGames() {
+        MENU_GAMES.click();
+    }
 
 
 }
