@@ -15,12 +15,12 @@ import static org.openqa.selenium.By.xpath;
 public class GamesPage {
     public SelenideElement
 
-            MY_GAMES = $(id("MyGames")),
-            FAVORITE_GAMES = $(id("FAVORITE GAMES")),
-            ALL_GAMES = $(id("ALL GAMES")),
+            MY_GAMES = $(xpath("//*[@resource-id='MyGames']")),
+            FAVORITE_GAMES = $(xpath("//*[@resource-id='Favorites']")),
+            ALL_GAMES = $(xpath("//*[@resource-id='AllGames']")),
             FILTERS = $(xpath("//*[@resource-id='SearchBarFilters'])")),
-            FILTER_GO_BACK = $(id("Go back")),
-            FILTER_SELECT_NBA = $(xpath("//android.widget.TextView[@text='NBA']"));
+            FILTER_GO_BACK = $(xpath("//*[@content-desc='Go back']")),
+            FILTER_SELECT_NBA = $(xpath("//*[@text='NBA']"));
 
     public ElementsCollection
             ALL_DISPLAYED_GAMES = $$(xpath("//android.widget.ScrollView//*[contains(@resource-id, 'GameSummary')]"));

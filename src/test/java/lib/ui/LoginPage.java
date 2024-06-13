@@ -20,6 +20,15 @@ public class LoginPage {
             LOGIN_FORM_BTN = $(xpath("//*[@text='Login']"));
 
 
+    public void loginWithUpgrade(String userName, String password) {
+        if (updateInstall()) {
+
+            loginWithCredentials(userName, password);
+        } else {
+            loginWithCredentials(userName, password);
+        }
+    }
+
     public void loginWithCredentials(String userName, String password) {
         LOGIN_BTN.click();
         chromeOptionSelectIfDisplayed();
@@ -44,14 +53,40 @@ public class LoginPage {
     }
 
     private void updateLaterSelect() {
-        if (UPDATE_DIALOG.isDisplayed()){
+        if (UPDATE_DIALOG.isDisplayed()) {
             UPDATE_LATER.click();
         }
     }
 
-    public void updateInstall() {
-        if (UPDATE_DIALOG.isDisplayed()){
+    public void updateInstallSelect() {
+        if (UPDATE_DIALOG.isDisplayed()) {
             UPDATE_INSTALL.click();
+        }
+    }
+
+    public Boolean updateInstall() {
+        int maxAttempts = 3;
+        int attempts = 0;
+        boolean isInstallSelected = false;
+
+        while (attempts <= maxAttempts) {
+            try {
+                if (UPDATE_DIALOG.isDisplayed()) {
+                    updateInstallSelect();
+                    isInstallSelected = true;
+                    break;
+                } else if (LOGIN_BTN.isDisplayed()) {
+                    break;
+                }
+            } catch (Exception e) {
+                attempts++;
+                System.err.println("Failed to submit update option or find login bnt. Retrying... attempt " + attempts);
+            }
+        }
+        if (isInstallSelected) {
+            return true;
+        } else {
+            throw new RuntimeException("Failed to submit update option or find login bnt. Tried with attempts " + attempts);
         }
     }
 
@@ -64,7 +99,7 @@ public class LoginPage {
                 if (UPDATE_DIALOG.isDisplayed()) {
                     updateLaterSelect();
                     return;
-                } else if (LOGIN_BTN.isDisplayed()){
+                } else if (LOGIN_BTN.isDisplayed()) {
                     return;
                 }
             } catch (Exception e) {
@@ -76,14 +111,14 @@ public class LoginPage {
     }
 
 
-    public void chromeOptionSelectIfDisplayed(){
+    public void chromeOptionSelectIfDisplayed() {
         int attempts = 0;
 
-        while (true){
+        while (true) {
             try {
-                if (USER_NAME_TEXT_BOX.isDisplayed()){
+                if (USER_NAME_TEXT_BOX.isDisplayed()) {
                     return;
-                } else if (CHROME_WELCOME_PAGE.isDisplayed()){
+                } else if (CHROME_WELCOME_PAGE.isDisplayed()) {
                     chromeUseWithoutAccountSelect();
                     return;
                 }

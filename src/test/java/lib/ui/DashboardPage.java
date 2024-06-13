@@ -22,8 +22,8 @@ public class DashboardPage {
             MENU_DASHBOARD = $(xpath("//*[@text='DASHBOARD']")),
             MENU_EDITS = $(xpath("//*[@content-desc='EDITS']")),
             MENU_GAMES = $(xpath("//*[@content-desc='GAMES']")),
-            GAMES_ACTION_ITEM = $(id("GamesActionItem")),
-            EDIT_ACTION_ITEM = $(id("EditsActionItem"));
+            GAMES_ACTION_ITEM = $(xpath("//*[@resource-id='GamesActionItem']")),
+            EDIT_ACTION_ITEM = $(xpath("//*[@resource-id='EditsActionItem']"));
 
 
 
@@ -49,11 +49,11 @@ public class DashboardPage {
         MENU_DASHBOARD.click();
     }
     public void openEdits() {
-        MENU_EDITS.click();
+        EDIT_ACTION_ITEM.click();
     }
 
     public void openGames() {
-        MENU_GAMES.click();
+        GAMES_ACTION_ITEM.click();
     }
 
 

@@ -1,5 +1,6 @@
 package tests;
 
+import lib.BasePage;
 import lib.ui.DashboardPage;
 import lib.ui.GamesPage;
 import lib.ui.LoginPage;
@@ -21,7 +22,8 @@ public class DashboardTests extends TestBase {
     @DisplayName("Login to home page")
     void LoginToDashboardPageTest() {
         loginPage.allowPermissions();
-        loginPage.updateLater();
+//        loginPage.updateLater();
+        loginPage.updateInstall();
         loginPage.loginWithCredentials(USERNAME, PASSWORD);
         dashboardPage.skipIntro();
         dashboardPage.openGames();
@@ -36,6 +38,31 @@ public class DashboardTests extends TestBase {
 //        homePageSr.setSportBasketball();
 //        homePageSr.goBackToDashboardPage();
     }
+    @Test
+    @Tag("android_local")
+    @DisplayName("Launch app")
+    void LaunchAppTest() {
+//        loginPage.allowPermissions();
+//        loginPage.updateLater();
+//        loginPage.updateInstall();
+        BasePage basePage = new BasePage();
+        basePage.terminateApp();
+//        basePage.closeApp();
+        basePage.activateApp();
 
+        loginPage.loginWithCredentials(USERNAME, PASSWORD);
+        dashboardPage.skipIntro();
+        dashboardPage.openGames();
+
+        GamesPage gamesPage = new GamesPage();
+        gamesPage.selectAllGames();
+        gamesPage.openFirstGame();
+        Player player = new Player();
+        player.pause();
+
+//        homePageSr.goToProfileSettings();
+//        homePageSr.setSportBasketball();
+//        homePageSr.goBackToDashboardPage();
+    }
 
 }

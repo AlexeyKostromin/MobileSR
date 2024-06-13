@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
+    private static DriverMobile driverMobile;
 
     @BeforeAll
     static void beforeAll() {
@@ -29,6 +30,8 @@ public class TestBase {
 
 
     static void initDriver() {
+        driverMobile = new DriverMobile();
+
         Configuration.browser = null;
         Configuration.browser = DriverMobile.class.getName();
 
