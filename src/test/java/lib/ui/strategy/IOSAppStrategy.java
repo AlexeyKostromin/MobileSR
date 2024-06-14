@@ -4,6 +4,8 @@ import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.time.Duration;
+
 public class IOSAppStrategy implements AppActionsStrategy {
     private IOSDriver iosDriver;
 
@@ -18,6 +20,16 @@ public class IOSAppStrategy implements AppActionsStrategy {
 
     @Override
     public void terminateApp() {
+
+    }
+
+    @Override
+    public void closeAppFromAppSwitch() {
+
+    }
+
+    @Override
+    public void runAppInBackground(Duration duration) {
 
     }
 }

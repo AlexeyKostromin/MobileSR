@@ -1,7 +1,9 @@
-package lib.ui;
+package lib.ui.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import lib.BasePage;
+import lib.ui.strategy.AppActionsStrategy;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import static com.codeborne.selenide.Selenide.$$;
 import static org.openqa.selenium.By.id;
 import static org.openqa.selenium.By.xpath;
 
-public class GamesPage {
+public class GamesPage extends BasePage {
     public SelenideElement
 
             MY_GAMES = $(xpath("//*[@resource-id='MyGames']")),
@@ -25,6 +27,10 @@ public class GamesPage {
     public ElementsCollection
             ALL_DISPLAYED_GAMES = $$(xpath("//android.widget.ScrollView//*[contains(@resource-id, 'GameSummary')]"));
 
+    public GamesPage(AppActionsStrategy appStrategy) {
+        super(appStrategy);
+    }
+
 
     public void selectAllGames() {
         ALL_GAMES.click();
@@ -35,6 +41,7 @@ public class GamesPage {
     }
 
     public void openFirstGame() {
+        //TODO: wait list loaded
         var gameList = getListOfAllDisplayedGames();
         if (!gameList.isEmpty()) {
             gameList.get(0).click();

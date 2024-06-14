@@ -1,12 +1,14 @@
-package lib.ui;
+package lib.ui.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import lib.BasePage;
+import lib.ui.strategy.AppActionsStrategy;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.appium.java_client.AppiumBy.id;
 import static org.openqa.selenium.By.xpath;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
     public SelenideElement
             PERMISSION_ALLOW_BTN = $(id("com.android.permissioncontroller:id/permission_allow_button")),
             CHROME_WELCOME_PAGE = $(id("com.android.chrome:id/fre_pager")),
@@ -18,6 +20,10 @@ public class LoginPage {
             USER_NAME_TEXT_BOX = $(id("Username")),
             PASSWORD_TEXT_BOX = $(id("Password")),
             LOGIN_FORM_BTN = $(xpath("//*[@text='Login']"));
+
+    public LoginPage(AppActionsStrategy appStrategy) {
+        super(appStrategy);
+    }
 
 
     public void loginWithUpgrade(String userName, String password) {
