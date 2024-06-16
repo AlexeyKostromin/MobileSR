@@ -4,6 +4,7 @@ import lib.PageFactory;
 import lib.ui.pages.DashboardPage;
 import lib.ui.pages.GamesPage;
 import lib.ui.pages.LoginPage;
+import lib.ui.pages.LoginPageDef;
 import lib.ui.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -49,13 +50,13 @@ public class DashboardTests extends TestBase {
         DashboardPage dashboardPage = PageFactory.getDashboardPage();
 //        loginPage.allowPermissions();
 //        loginPage.updateLater();
-//        loginPage.updateInstall();
+        loginPage.updateInstall();
 //        BasePage basePage = PageFactory.getBasePage();
         loginPage.closeAppFromAppSwitch();
-
         loginPage.activateApp();
 
         loginPage.loginWithCredentials(USERNAME, PASSWORD);
+
         dashboardPage.skipIntro();
         dashboardPage.openGames();
 

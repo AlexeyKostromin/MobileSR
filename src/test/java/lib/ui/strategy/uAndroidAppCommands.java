@@ -54,6 +54,10 @@ public class uAndroidAppCommands {
 
 
     }
+
+
+    //To use shell you need to start appium with parameters
+    //appium --allow-insecure=adb_shell
     public void terminateAppCloseAll(){
         androidDriver.executeScript("mobile: shell", new HashMap<String, Object>() {{
             put("command", "input");

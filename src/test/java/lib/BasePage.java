@@ -65,7 +65,7 @@ public class BasePage {
         Dimension size = driver.manage().window().getSize();
         int centerX = size.width / 2;
         int startY = (int) (size.height * 0.70);
-        int endY = (int) (size.height * 0.30);
+        int endY = (int) (size.height * 0.20);
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence swipe = new Sequence(finger, 1)

@@ -12,7 +12,6 @@ import lib.ui.pages.LoginPage;
 import lib.ui.strategy.AndroidAppStrategy;
 import lib.ui.strategy.IOSAppStrategy;
 
-//import static lib.BasePage.driver;
 import static lib.Platform.isAndroid;
 import static lib.Platform.isIOS;
 
