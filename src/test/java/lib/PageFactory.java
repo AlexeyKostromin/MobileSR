@@ -1,5 +1,7 @@
 package lib;
 
+import lib.ui.player.PlayerAndroid;
+import lib.ui.player.PlayerIOS;
 import lib.ui.android.DashboardPageAndroid;
 import lib.ui.android.GamesPageAndroid;
 import lib.ui.android.LoginPageAndroid;
@@ -9,8 +11,6 @@ import lib.ui.ios.LoginPageIOS;
 import lib.ui.pages.DashboardPage;
 import lib.ui.pages.GamesPage;
 import lib.ui.pages.LoginPage;
-import lib.ui.strategy.AndroidAppStrategy;
-import lib.ui.strategy.IOSAppStrategy;
 
 import static lib.Platform.isAndroid;
 import static lib.Platform.isIOS;
@@ -19,9 +19,9 @@ public class PageFactory {
 
     public static BasePage getBasePage() {
         if (isAndroid()) {
-            return new BasePage(new AndroidAppStrategy());
+            return new BasePage();
         } else if (isIOS()) {
-            return new BasePage(new IOSAppStrategy());
+            return new BasePage();
         } else {
             throw new IllegalStateException("Unsupported platform");
         }
@@ -29,9 +29,9 @@ public class PageFactory {
 
     public static LoginPage getLoginPage() {
         if (isAndroid()) {
-            return new LoginPageAndroid(new AndroidAppStrategy());
+            return new LoginPageAndroid();
         } else if (isIOS()) {
-            return new LoginPageIOS(new IOSAppStrategy());
+            return new LoginPageIOS();
         } else {
             throw new IllegalStateException("Unsupported platform");
         }
@@ -39,9 +39,9 @@ public class PageFactory {
 
     public static DashboardPage getDashboardPage() {
         if (isAndroid()) {
-            return new DashboardPageAndroid(new AndroidAppStrategy());
+            return new DashboardPageAndroid();
         } else if (isIOS()) {
-            return new DashboardPageIOS(new IOSAppStrategy());
+            return new DashboardPageIOS();
         } else {
             throw new IllegalStateException("Unsupported platform");
         }
@@ -49,9 +49,9 @@ public class PageFactory {
 
     public static GamesPage getGamesPage() {
         if (isAndroid()) {
-            return new GamesPageAndroid(new AndroidAppStrategy());
+            return new GamesPageAndroid(new PlayerAndroid());
         } else if (isIOS()) {
-            return new GamesPageIOS(new IOSAppStrategy());
+            return new GamesPageIOS(new PlayerIOS());
         } else {
             throw new IllegalStateException("Unsupported platform");
         }

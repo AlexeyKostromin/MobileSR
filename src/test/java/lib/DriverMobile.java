@@ -63,15 +63,6 @@ public class DriverMobile implements WebDriverProvider {
         return driver;
     }
 
-//    public void terminateApp(){
-//        var driver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), capabilities);
-////        driver.launchApp();
-//        driver.activateApp();
-//        driver.close();
-//
-////        driver.terminateApp(driverMobile.getOptionsAndroid())
-////        driver.closeApp();
-//    }
 
     public void installuninstallapp() {
 //        ((AppiumDriver)driver).removeApp(<package name>); // Remove the specified app from the device (uninstall)
@@ -83,10 +74,6 @@ public class DriverMobile implements WebDriverProvider {
 //        ((AppiumDriver)driver).quit(); // quits the session created between the client and the server
     }
 
-//    getAppPackage()); // Use the appropriate package name
-//    driver.activateApp(driverMobile.getOptionsAndroid().??
-//
-//    getAppPackage()); // And again for activation
 
     private UiAutomator2Options getOptionsAndroid() {
         UiAutomator2Options options = new UiAutomator2Options();
@@ -141,7 +128,8 @@ public class DriverMobile implements WebDriverProvider {
 
     //https://github.com/wikimedia/apps-android-wikipedia/releases/download/latest/app-alpha-universal-release.apk
     private String getAppPath() {
-        String appVersion = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
+        String appVersion = "com.sportradar.coaching.mobile-1.2.4-production-release.apk";
+//        String appVersion = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
 //        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia" +
 //                "/releases/download/latest/" + appVersion;
         String appPath = "src/test/resources/apps/" + appVersion;

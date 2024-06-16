@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import lib.BasePage;
+import lib.PageFactory;
 
 import java.time.Duration;
 
@@ -12,8 +13,8 @@ public class AndroidAppStrategy implements AppActionsStrategy {
     private BasePage basePage;
     private AndroidDriver androidDriver;
 
-    public AndroidAppStrategy() {
-        this.basePage = new BasePage(this);
+    public AndroidAppStrategy(BasePage basePage) {
+        this.basePage = basePage;
         this.androidDriver = (AndroidDriver) WebDriverRunner.getWebDriver();
     }
 

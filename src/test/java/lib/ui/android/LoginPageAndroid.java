@@ -1,7 +1,6 @@
 package lib.ui.android;
 
 import lib.ui.pages.LoginPage;
-import lib.ui.strategy.AppActionsStrategy;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.appium.java_client.AppiumBy.id;
@@ -9,10 +8,10 @@ import static org.openqa.selenium.By.xpath;
 
 public class LoginPageAndroid extends LoginPage {
 
-    public LoginPageAndroid(AppActionsStrategy appStrategy) {
-        super(appStrategy);
+    public LoginPageAndroid() {
         initElements();
     }
+
     protected void initElements() {
         PERMISSION_ALLOW_BTN = $(id("com.android.permissioncontroller:id/permission_allow_button"));
         CHROME_WELCOME_PAGE = $(id("com.android.chrome:id/fre_pager"));

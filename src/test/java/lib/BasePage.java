@@ -19,23 +19,22 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.*;
 
 public class BasePage {
-    public static RemoteWebDriver driver;
+    protected static RemoteWebDriver driver;
     private AppActionsStrategy appStrategy;
 
-    public BasePage(AppActionsStrategy appStrategy) {
-        this.appStrategy = appStrategy;
-        driver = (RemoteWebDriver)WebDriverRunner.getWebDriver();
+    public BasePage() {
+        driver = (RemoteWebDriver) WebDriverRunner.getWebDriver();
+        initAppStrategy();
     }
 
-    static void initDriver() {
-//        driverMobile = new DriverMobile();
-//        driverMobile.initDriver();
-
-        Configuration.browser = null;
-        Configuration.browser = DriverMobile.class.getName();
-
-        Configuration.browserSize = null;
-        Configuration.timeout = 10000;
+    protected void initAppStrategy() {
+        if (isAndroid()) {
+            appStrategy = new AndroidAppStrategy(this);
+        } else if (isIOS()) {
+            appStrategy = new IOSAppStrategy(this);
+        } else {
+            throw new RuntimeException("Cannot init app strategy!");
+        }
     }
 
     public void activateApp() {
@@ -61,6 +60,7 @@ public class BasePage {
     public void swipeUpQuick() {
         swipeUp(300);
     }
+
     public void swipeUp(int timeOfScroll) {
         Dimension size = driver.manage().window().getSize();
         int centerX = size.width / 2;

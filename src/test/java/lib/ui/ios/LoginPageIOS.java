@@ -1,9 +1,6 @@
 package lib.ui.ios;
 
-import com.codeborne.selenide.SelenideElement;
 import lib.ui.pages.LoginPage;
-import lib.ui.pages.LoginPageDef;
-import lib.ui.strategy.AppActionsStrategy;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.appium.java_client.AppiumBy.id;
@@ -11,8 +8,7 @@ import static org.openqa.selenium.By.xpath;
 
 public class LoginPageIOS extends LoginPage {
 
-    public LoginPageIOS(AppActionsStrategy appStrategy) {
-        super(appStrategy);
+    public LoginPageIOS() {
         initElements();
     }
 

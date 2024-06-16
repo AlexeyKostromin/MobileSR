@@ -1,8 +1,9 @@
 package lib.ui.pages;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import lib.BasePage;
-import lib.ui.strategy.AppActionsStrategy;
 
 public class LoginPage extends BasePage {
     protected SelenideElement
@@ -17,8 +18,8 @@ public class LoginPage extends BasePage {
             LOGIN_BTN,
             LOGIN_FORM_BTN;
 
-    public LoginPage(AppActionsStrategy appStrategy) {
-        super(appStrategy);
+    public LoginPage() {
+
     }
 
 
@@ -32,7 +33,7 @@ public class LoginPage extends BasePage {
     }
 
     public void loginWithCredentials(String userName, String password) {
-        LOGIN_BTN.click();
+        LOGIN_BTN.shouldBe(Condition.visible).click();
         chromeOptionSelectIfDisplayed();
         USER_NAME_TEXT_BOX.click();
         USER_NAME_TEXT_BOX.sendKeys(userName);
@@ -76,7 +77,9 @@ public class LoginPage extends BasePage {
                 if (UPDATE_DIALOG.isDisplayed()) {
                     updateInstallSelect();
                     isInstallSelected = true;
-                    try { Thread.sleep(3000); } catch (InterruptedException e) { /* Do nothing */ } //TODO:add reliable wait for update downloaded
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) { /* Do nothing */ } //TODO:add reliable wait for update downloaded
                     break;
                 } else if (LOGIN_BTN.isDisplayed()) {
                     break;

@@ -12,22 +12,22 @@ public class DashboardPage {
 
     public SelenideElement
 
-            SKIP_FOR_NOW = $(xpath("//*[@text='Skip for now']")),
-            DRIVE_STRAIGHT_IT_BTN = $(id("DiveStraightInButton")),
-            MAIN_MENU = $(id("drawerId")),
-            SETTINGS = $(xpath("//*[@text='SETTINGS']")),
-            PROFILE_SETTINGS = $(xpath("//*[@text='Profile Settings']")),
-            CURRENT_SPORT_DROP_DOWN = $(id("textInput")),
-            SPORT_BASKETBALL = $(xpath("//*[@text='Basketball']")),
-            SAVE_PROFILE_SETTINGS_BTN = $(xpath("//*[@text='SAVE']")),
-            MENU_BLOCK = $(xpath("//*[@content-desc='Go back']")),
-            MENU_DASHBOARD = $(xpath("//*[@text='DASHBOARD']")),
-            MENU_EDITS = $(xpath("//*[@content-desc='EDITS']")),
-            MENU_GAMES = $(xpath("//*[@content-desc='GAMES']")),
-            GAMES_ACTION_ITEM = $(xpath("//*[@resource-id='GamesActionItem']")),
-            EDIT_ACTION_ITEM = $(xpath("//*[@resource-id='EditsActionItem']"));
+            SKIP_FOR_NOW,
+            DRIVE_STRAIGHT_IT_BTN,
+            MAIN_MENU,
+            SETTINGS,
+            PROFILE_SETTINGS,
+            CURRENT_SPORT_DROP_DOWN,
+            SPORT_BASKETBALL,
+            SAVE_PROFILE_SETTINGS_BTN,
+            MENU_BLOCK,
+            MENU_DASHBOARD,
+            MENU_EDITS,
+            MENU_GAMES,
+            GAMES_ACTION_ITEM,
+            EDIT_ACTION_ITEM;
 
-    public DashboardPage(AppActionsStrategy appActionsStrategy) {
+    public DashboardPage() {
 
     }
 
@@ -53,6 +53,7 @@ public class DashboardPage {
         MENU_BLOCK.click();
         MENU_DASHBOARD.click();
     }
+
     public void openEdits() {
         EDIT_ACTION_ITEM.click();
     }
