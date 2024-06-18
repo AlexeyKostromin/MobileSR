@@ -20,9 +20,9 @@ public class LoginPageIOS extends LoginPage {
         UPDATE_INSTALL = $(xpath("x"));
         UPDATE_LATER = $(xpath("x"));
         UPDATE_CONTINUE = $(id("Continue"));
-        LOGIN_BTN = $(id("x"));
-        USER_NAME_TEXT_BOX = $(id("x"));
-        PASSWORD_TEXT_BOX = $(id("x"));
-        LOGIN_FORM_BTN = $(xpath("x"));
+        LOGIN_BTN = $(id("login-button"));
+        USER_NAME_TEXT_BOX = $(xpath("//XCUIElementTypeTextField[@value='Username']"));
+        PASSWORD_TEXT_BOX = $(xpath("//XCUIElementTypeSecureTextField[@value='Password']"));
+        LOGIN_FORM_BTN = $(id("Login"));
     }
 }

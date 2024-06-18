@@ -97,8 +97,8 @@ public class DriverMobile implements WebDriverProvider {
 
         options.setAutomationName(IOS_XCUI_TEST)
                 .setPlatformName(IOS)
-                .setPlatformVersion("16.0")
-                .setDeviceName("iPhone 14")
+                .setPlatformVersion("17.5")
+                .setDeviceName("iPhone 15")
                 .setApp(getAppPath())
                 .setAppPackage("com.sportradar.coaching.mobile")
                 .setAppActivity("com.sportradar.coaching.mobile.MainActivity")

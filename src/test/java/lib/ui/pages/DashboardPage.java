@@ -13,16 +13,18 @@ public class DashboardPage {
             DRIVE_STRAIGHT_IT_BTN,
             MAIN_MENU,
             SETTINGS,
+            DOWNLOADS,
             PROFILE_SETTINGS,
             CURRENT_SPORT_DROP_DOWN,
             SPORT_BASKETBALL,
             SAVE_PROFILE_SETTINGS_BTN,
-            MENU_BLOCK,
+            MENU_BACK,
             MENU_DASHBOARD,
             MENU_EDITS,
             MENU_GAMES,
             GAMES_ACTION_ITEM,
-            EDIT_ACTION_ITEM;
+            EDITS_ACTION_ITEM,
+            ANALYTICS_ACTION_ITEM;
 
     public DashboardPage() {
 
@@ -47,12 +49,12 @@ public class DashboardPage {
     }
 
     public void goBackToDashboardPage() {
-        MENU_BLOCK.click();
+        MENU_BACK.click();
         MENU_DASHBOARD.click();
     }
 
     public void openEdits() {
-        EDIT_ACTION_ITEM.click();
+        EDITS_ACTION_ITEM.click();
     }
 
     public void openGames() {

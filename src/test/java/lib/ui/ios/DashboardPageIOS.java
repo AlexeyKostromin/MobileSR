@@ -1,31 +1,35 @@
 package lib.ui.ios;
 
+import com.codeborne.selenide.SelenideElement;
 import lib.ui.pages.DashboardPage;
-import lib.ui.strategy.AppActionsStrategy;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.appium.java_client.AppiumBy.id;
 import static org.openqa.selenium.By.xpath;
 
 public class DashboardPageIOS extends DashboardPage {
+
+
     public DashboardPageIOS() {
         initElements();
     }
 
     protected void initElements() {
-        SKIP_FOR_NOW = $(xpath("notImplementedYet"));
-        DRIVE_STRAIGHT_IT_BTN = $(id("notImplementedYet"));
-        MAIN_MENU = $(id("notImplementedYet"));
-        SETTINGS = $(xpath("notImplementedYet"));
-        PROFILE_SETTINGS = $(xpath("notImplementedYet"));
-        CURRENT_SPORT_DROP_DOWN = $(id("notImplementedYet"));
-        SPORT_BASKETBALL = $(xpath("notImplementedYet"));
-        SAVE_PROFILE_SETTINGS_BTN = $(xpath("notImplementedYet"));
-        MENU_BLOCK = $(xpath("notImplementedYet"));
-        MENU_DASHBOARD = $(xpath("notImplementedYet"));
-        MENU_EDITS = $(xpath("notImplementedYet"));
-        MENU_GAMES = $(xpath("notImplementedYet"));
-        GAMES_ACTION_ITEM = $(xpath("notImplementedYet"));
-        EDIT_ACTION_ITEM = $(xpath("notImplementedYet"));
+        SKIP_FOR_NOW = $(id("Skip for now"));
+        DRIVE_STRAIGHT_IT_BTN = $(id("DiveStraightInButton"));
+        MAIN_MENU = $(id("drawerId"));
+        SETTINGS = $(xpath("//XCUIElementTypeButton[@name='SETTINGS']"));
+        DOWNLOADS = $(xpath("//XCUIElementTypeButton[contains(@name, 'DOWNLOADS')]"));
+        PROFILE_SETTINGS = $(id("Profile Settings Button"));
+        CURRENT_SPORT_DROP_DOWN = $(id("touchable"));
+        SPORT_BASKETBALL = $(id("\uDB80\uDD2C Basketball"));
+        SAVE_PROFILE_SETTINGS_BTN = $(id("SAVE"));
+        MENU_BACK = $(id("Go back"));
+        MENU_DASHBOARD = $(xpath("//XCUIElementTypeButton[@name='DASHBOARD']"));
+        MENU_EDITS = $(xpath("//XCUIElementTypeButton[@name='EDITS']"));
+        MENU_GAMES = $(xpath("//XCUIElementTypeButton[@name='GAMES']"));
+        GAMES_ACTION_ITEM = $(id("GamesActionItem"));
+        EDITS_ACTION_ITEM = $(id("EditsActionItem"));
+        ANALYTICS_ACTION_ITEM = $(id("AnalyticsActionItem"));
     }
 }

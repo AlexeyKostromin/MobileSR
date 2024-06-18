@@ -25,11 +25,13 @@ public class GamesPage extends BasePage {
             FAVORITE_GAMES,
             ALL_GAMES,
             SCROLL_VIEW,
+            GAMES_SUMMARY_ELEMENT,
             FILTERS,
             FILTER_GO_BACK,
             FILTER_SELECT_NBA;
     public ElementsCollection
-            ALL_DISPLAYED_GAMES = $$(xpath("//android.widget.ScrollView//*[contains(@resource-id, 'GameSummary')]"));
+            ALL_DISPLAYED_GAMES;
+//            ALL_DISPLAYED_GAMES = $$(xpath("//android.widget.ScrollView//*[contains(@resource-id, 'GameSummary')]"));
 
 
     public void selectAllGames() {
@@ -51,7 +53,8 @@ public class GamesPage extends BasePage {
 
     public List<SelenideElement> getListOfAllDisplayedGames() {
         List<SelenideElement> gameList = new ArrayList<>();
-        SCROLL_VIEW.shouldBe(Condition.visible);
+//        SCROLL_VIEW.shouldBe(Condition.visible);
+        GAMES_SUMMARY_ELEMENT.shouldBe(Condition.visible);
         var allGameElements = ALL_DISPLAYED_GAMES;
         for (SelenideElement game : allGameElements) {
             gameList.add(game);

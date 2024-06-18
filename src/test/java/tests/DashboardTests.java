@@ -22,7 +22,7 @@ public class DashboardTests extends TestBase {
         DashboardPage dashboardPage = PageFactory.getDashboardPage();
 
         loginPage.allowPermissions();//move to method launch app
-        loginPage.updateInstall();
+        loginPage.updateApp();
         loginPage.loginWithCredentials(USERNAME, PASSWORD);
         dashboardPage.skipIntro();
         dashboardPage.openGames();
@@ -45,7 +45,7 @@ public class DashboardTests extends TestBase {
         DashboardPage dashboardPage = PageFactory.getDashboardPage();
 //        loginPage.allowPermissions();//move to method launch app
 
-        loginPage.updateInstall();
+        loginPage.updateApp();
         loginPage.closeAppFromAppSwitch();
         loginPage.activateApp();
 
@@ -97,17 +97,15 @@ public class DashboardTests extends TestBase {
     @Tag("android_local")
     @DisplayName("Launch app")
     void LaunchAppIOSTest() {
+        String USERNAME_STAGING = "rpro_orange@mailinator.com";
+        String PASSWORD_STAGING = "Synergy2022@RANGe";
+
         LoginPage loginPage = PageFactory.getLoginPage();
         DashboardPage dashboardPage = PageFactory.getDashboardPage();
-        loginPage.closeAppFromAppSwitch();
-//        loginPage.allowPermissions();//move to method launch app
-        loginPage.activateApp();
-//        loginPage.updateInstall();
-        loginPage.terminateApp();
-        loginPage.closeAppFromAppSwitch();
-        loginPage.activateApp();
 
-        loginPage.loginWithCredentials(USERNAME, PASSWORD);
+        loginPage.updateApp();
+
+        loginPage.loginWithCredentials(USERNAME_STAGING, PASSWORD_STAGING);
 
         dashboardPage.skipIntro();
         dashboardPage.openGames();

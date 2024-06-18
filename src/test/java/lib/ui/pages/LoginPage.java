@@ -55,23 +55,28 @@ public class LoginPage extends BasePage {
         }
     }
 
-    private void updateLaterSelect() {
-        if (UPDATE_DIALOG.isDisplayed()) {
-            UPDATE_LATER.click();
+    public void updateApp() {
+        if (UPDATE_CONTINUE.isDisplayed()) {
+            updateContinue();
+        } else if (UPDATE_INSTALL.isDisplayed()) {
+            updateInstall();
+            super.closeAppFromAppSwitch();
+            super.activateApp();
         }
     }
 
-    public void updateInstallSelect() {
-        if (UPDATE_INSTALL.isDisplayed()) {
-            UPDATE_INSTALL.click();
-        } else if (UPDATE_CONTINUE.isDisplayed()) {
+
+    private void updateContinue() {
+        if (UPDATE_CONTINUE.isDisplayed()) {
             UPDATE_CONTINUE.click();
-        } else {
-            throw new RuntimeException("Could not upgrade by Install or Continue buttons!");
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) { /* Do nothing */ } //TODO:add reliable wait for update completed
         }
     }
 
-    public Boolean updateInstall() {
+
+    private Boolean updateInstall() {
         int maxAttempts = 3;
         int attempts = 0;
         boolean isInstallSelected = false;
@@ -79,7 +84,7 @@ public class LoginPage extends BasePage {
         while (attempts <= maxAttempts) {
             try {
                 if (UPDATE_DIALOG.isDisplayed()) {
-                    updateInstallSelect();
+                    UPDATE_INSTALL.click();
                     isInstallSelected = true;
                     try {
                         Thread.sleep(3000);
@@ -97,6 +102,12 @@ public class LoginPage extends BasePage {
             return true;
         } else {
             throw new RuntimeException("Failed to submit update option or find login bnt. Tried with attempts " + attempts);
+        }
+    }
+
+    private void updateLaterSelect() {
+        if (UPDATE_DIALOG.isDisplayed()) {
+            UPDATE_LATER.click();
         }
     }
 
