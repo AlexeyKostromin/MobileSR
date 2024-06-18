@@ -13,15 +13,16 @@ public class LoginPageIOS extends LoginPage {
     }
 
     protected void initElements() {
-        PERMISSION_ALLOW_BTN = $(id(""));
-        CHROME_WELCOME_PAGE = $(id(""));
-        CHROME_USE_WITHOUT_ACCOUNT_BTN = $(id(""));
-        UPDATE_DIALOG = $(xpath(""));
-        UPDATE_INSTALL = $(xpath(""));
-        UPDATE_LATER = $(xpath(""));
-        LOGIN_BTN = $(id(""));
-        USER_NAME_TEXT_BOX = $(id(""));
-        PASSWORD_TEXT_BOX = $(id(""));
-        LOGIN_FORM_BTN = $(xpath(""));
+        PERMISSION_ALLOW_BTN = $(id("x"));
+        CHROME_WELCOME_PAGE = $(id("x"));
+        CHROME_USE_WITHOUT_ACCOUNT_BTN = $(id("x"));
+        UPDATE_DIALOG = $(xpath("//XCUIElementTypeAlert"));
+        UPDATE_INSTALL = $(xpath("x"));
+        UPDATE_LATER = $(xpath("x"));
+        UPDATE_CONTINUE = $(id("Continue"));
+        LOGIN_BTN = $(id("x"));
+        USER_NAME_TEXT_BOX = $(id("x"));
+        PASSWORD_TEXT_BOX = $(id("x"));
+        LOGIN_FORM_BTN = $(xpath("x"));
     }
 }

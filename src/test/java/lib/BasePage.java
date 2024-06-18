@@ -1,10 +1,9 @@
 package lib;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
-import lib.ui.strategy.AndroidAppStrategy;
+import lib.ui.strategy.AndroidAppActionsStrategy;
 import lib.ui.strategy.AppActionsStrategy;
-import lib.ui.strategy.IOSAppStrategy;
+import lib.ui.strategy.IOSAppActionsStrategy;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
@@ -29,9 +28,9 @@ public class BasePage {
 
     protected void initAppStrategy() {
         if (isAndroid()) {
-            appStrategy = new AndroidAppStrategy(this);
+            appStrategy = new AndroidAppActionsStrategy(this);
         } else if (isIOS()) {
-            appStrategy = new IOSAppStrategy(this);
+            appStrategy = new IOSAppActionsStrategy(this);
         } else {
             throw new RuntimeException("Cannot init app strategy!");
         }
@@ -64,8 +63,8 @@ public class BasePage {
     public void swipeUp(int timeOfScroll) {
         Dimension size = driver.manage().window().getSize();
         int centerX = size.width / 2;
-        int startY = (int) (size.height * 0.70);
-        int endY = (int) (size.height * 0.20);
+        int startY = (int) (size.height * 0.70); // Start near the bottom
+        int endY = (int) (size.height * 0.20); // End near the top
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence swipe = new Sequence(finger, 1)
@@ -75,5 +74,7 @@ public class BasePage {
                 .addAction(finger.createPointerUp(0));
 
         driver.perform(Arrays.asList(swipe));
+
     }
+
 }

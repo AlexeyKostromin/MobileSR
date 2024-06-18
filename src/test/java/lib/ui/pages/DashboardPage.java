@@ -1,12 +1,9 @@
 package lib.ui.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import lib.ui.strategy.AndroidAppStrategy;
-import lib.ui.strategy.AppActionsStrategy;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.appium.java_client.AppiumBy.id;
-import static org.openqa.selenium.By.xpath;
 
 public class DashboardPage {
 

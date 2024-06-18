@@ -122,6 +122,13 @@ public class uAndroidAppCommands {
 //        return this;
     }
 
+    public void terminateAppIOS(){
+        ((InteractsWithApps) androidDriver).terminateApp("appID");
+        //where appID is APP_PACKAGE (Android) or BUNDLE_ID (iOS)
+        //PROD: com.sportradar.coaching.mobile
+        //STAGING: com.sportradar.coaching.mobile.staging
+    }
+
 
 
 

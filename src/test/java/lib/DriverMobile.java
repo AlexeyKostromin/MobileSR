@@ -5,7 +5,6 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import javax.annotation.Nonnull;
@@ -18,6 +17,7 @@ import static io.appium.java_client.remote.AutomationName.ANDROID_UIAUTOMATOR2;
 import static io.appium.java_client.remote.AutomationName.IOS_XCUI_TEST;
 import static io.appium.java_client.remote.MobilePlatform.ANDROID;
 import static io.appium.java_client.remote.MobilePlatform.IOS;
+import static lib.Platform.*;
 
 
 public class DriverMobile implements WebDriverProvider {
@@ -53,9 +53,9 @@ public class DriverMobile implements WebDriverProvider {
     }
 
     public RemoteWebDriver initDriver() {
-        if (Platform.isAndroid()) {
+        if (isAndroid()) {
             driver = new AndroidDriver(getAppiumServerUrl(), getOptionsAndroid());
-        } else if (Platform.isIOS()) {
+        } else if (isIOS()) {
             driver = new IOSDriver(getAppiumServerUrl(), getOptionsIOS());
         } else {
             throw new RuntimeException("Driver could not be determined");
@@ -125,23 +125,70 @@ public class DriverMobile implements WebDriverProvider {
 //        }
 //    }
 
-
-    //https://github.com/wikimedia/apps-android-wikipedia/releases/download/latest/app-alpha-universal-release.apk
     private String getAppPath() {
-        String appVersion = "com.sportradar.coaching.mobile-1.2.4-production-release.apk";
-//        String appVersion = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
-//        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia" +
-//                "/releases/download/latest/" + appVersion;
-        String appPath = "src/test/resources/apps/" + appVersion;
+        if (isLocalHostRuntimeEnv()) {
+            return getAppPathLocal();
+        } else
+            return getAppPathRemote();
+    }
+
+    private String getAppPathLocal() {
+        String appPath = "";
+
+        String appName = "SynergySportsStaging-1.3.1.app";
+
+        if (isAndroid()) {
+            appPath = "src/test/resources/apps/" + appName;
+        } else if (isIOS()) {
+            appPath = "src/test/resources/apps/" + appName;
+        }
+
+        File app = new File(appPath);
+        if (!app.exists()) {
+            throw new AssertionError("Failed to get application from: " + appPath);
+        }
+        return app.getAbsolutePath();
+    }
+
+    private String getAppPathRemote() {
+        String appPath = "";
+
+        String appName = "SynergySportsStaging-1.3.1.app";
+
+        if (isAndroid()) {
+            appPath = "src/test/resources/apps/" + appName;
+        } else if (isIOS() && isMacRuntimeEnv()) {
+            String localPath = "/Users/o.kostromin/@Builds/iOS/";
+            appPath = localPath + appName;
+        } else if (isIOS()) {
+            appPath = "src/test/resources/" + appName;
+        }
 
         File app = new File(appPath);
 //        if (!app.exists()) {
-//            try (InputStream in = new URL(appUrl).openStream()) {
-//                copyInputStreamToFile(in, app);
-//            } catch (IOException e) {
-//                throw new AssertionError("Failed to download application", e);
-//            }
+//            throw new AssertionError("Failed to get application from: " + appPath);
 //        }
-        return app.getAbsolutePath();
+        return appPath;
     }
+
+
+
+
+//    private String getAppPath() {
+//        String appVersion = "com.sportradar.coaching.mobile-1.2.4-production-release.apk";
+////        String appVersion = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
+////        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia" +
+////                "/releases/download/latest/" + appVersion;
+//        String appPath = "src/test/resources/apps/" + appVersion;
+//
+//        File app = new File(appPath);
+////        if (!app.exists()) {
+////            try (InputStream in = new URL(appUrl).openStream()) {
+////                copyInputStreamToFile(in, app);
+////            } catch (IOException e) {
+////                throw new AssertionError("Failed to download application", e);
+////            }
+////        }
+//        return app.getAbsolutePath();
+//    }
 }

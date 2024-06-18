@@ -1,7 +1,6 @@
 package lib.ui.pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import lib.BasePage;
 
@@ -13,6 +12,7 @@ public class LoginPage extends BasePage {
             UPDATE_DIALOG,
             UPDATE_INSTALL,
             UPDATE_LATER,
+            UPDATE_CONTINUE,
             USER_NAME_TEXT_BOX,
             PASSWORD_TEXT_BOX,
             LOGIN_BTN,
@@ -62,8 +62,12 @@ public class LoginPage extends BasePage {
     }
 
     public void updateInstallSelect() {
-        if (UPDATE_DIALOG.isDisplayed()) {
+        if (UPDATE_INSTALL.isDisplayed()) {
             UPDATE_INSTALL.click();
+        } else if (UPDATE_CONTINUE.isDisplayed()) {
+            UPDATE_CONTINUE.click();
+        } else {
+            throw new RuntimeException("Could not upgrade by Install or Continue buttons!");
         }
     }
 

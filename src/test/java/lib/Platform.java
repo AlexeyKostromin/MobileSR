@@ -26,11 +26,16 @@ public class Platform {
         return instance;
     }
 
-    private void initConfig() {
-        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
-        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_LOCALHOST);
-        APPIUM_URL = System.getProperty("appiumURL", "http://127.0.0.1:4723/");
+//    private void initConfig() {
+//        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
+//        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_LOCALHOST);
+//        APPIUM_URL = System.getProperty("appiumURL", "http://127.0.0.1:4723/");
+//    }
 
+    private void initConfig() {
+        PLATFORM = System.getProperty("platform", PLATFORM_IOS);
+        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
+        APPIUM_URL = System.getProperty("appiumURL", "http://192.168.0.201:4723/");
     }
 
 //    private String setAppiumUrl() {
@@ -53,7 +58,6 @@ public class Platform {
 //            throw new IllegalStateException("Unsupported runtime environment.");
 //        }
 //    }
-
 
 
     private static Boolean isPlatform(String expectedPlatform) {

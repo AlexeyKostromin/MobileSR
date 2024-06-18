@@ -19,6 +19,7 @@ public class LoginPageAndroid extends LoginPage {
         UPDATE_DIALOG = $(xpath("//android.widget.TextView[@text='Update available']"));
         UPDATE_INSTALL = $(xpath("//android.widget.Button[@text='INSTALL']"));
         UPDATE_LATER = $(xpath("//android.widget.Button[@text='LATER']"));
+        UPDATE_CONTINUE = $(id(""));
         LOGIN_BTN = $(id("login-button"));
         USER_NAME_TEXT_BOX = $(id("Username"));
         PASSWORD_TEXT_BOX = $(id("Password"));

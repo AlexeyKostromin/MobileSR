@@ -5,15 +5,14 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import lib.BasePage;
-import lib.PageFactory;
 
 import java.time.Duration;
 
-public class AndroidAppStrategy implements AppActionsStrategy {
+public class AndroidAppActionsStrategy implements AppActionsStrategy {
     private BasePage basePage;
     private AndroidDriver androidDriver;
 
-    public AndroidAppStrategy(BasePage basePage) {
+    public AndroidAppActionsStrategy(BasePage basePage) {
         this.basePage = basePage;
         this.androidDriver = (AndroidDriver) WebDriverRunner.getWebDriver();
     }
@@ -21,6 +20,7 @@ public class AndroidAppStrategy implements AppActionsStrategy {
     @Override
     public void activateApp() {
 //        androidDriver.activateApp(getAndroidOptions().getAppPackage().get());
+        //TODO:remove hardcoded value
         String packageName = "com.sportradar.coaching.mobile";
         androidDriver.activateApp(packageName);
     }

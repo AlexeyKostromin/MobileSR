@@ -93,4 +93,34 @@ public class DashboardTests extends TestBase {
 
     }
 
+    @Test
+    @Tag("android_local")
+    @DisplayName("Launch app")
+    void LaunchAppIOSTest() {
+        LoginPage loginPage = PageFactory.getLoginPage();
+        DashboardPage dashboardPage = PageFactory.getDashboardPage();
+        loginPage.closeAppFromAppSwitch();
+//        loginPage.allowPermissions();//move to method launch app
+        loginPage.activateApp();
+//        loginPage.updateInstall();
+        loginPage.terminateApp();
+        loginPage.closeAppFromAppSwitch();
+        loginPage.activateApp();
+
+        loginPage.loginWithCredentials(USERNAME, PASSWORD);
+
+        dashboardPage.skipIntro();
+        dashboardPage.openGames();
+
+        GamesPage gamesPage = PageFactory.getGamesPage();
+        gamesPage.selectAllGames();
+        gamesPage.openFirstGame();
+        gamesPage.player.pause();
+        gamesPage.player.next();
+//        Player player = new Player();
+//        gamesPage.player.pause();
+//        player.next();
+
+    }
+
 }
