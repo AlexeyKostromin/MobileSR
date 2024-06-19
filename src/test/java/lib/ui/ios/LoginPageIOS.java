@@ -13,12 +13,12 @@ public class LoginPageIOS extends LoginPage {
     }
 
     protected void initElements() {
-        PERMISSION_ALLOW_BTN = $(id("x"));
-        CHROME_WELCOME_PAGE = $(id("x"));
-        CHROME_USE_WITHOUT_ACCOUNT_BTN = $(id("x"));
+        PERMISSION_ALLOW_BTN = $(id("notImplementedYet"));
+        CHROME_WELCOME_PAGE = $(id("notImplementedYet"));
+        CHROME_USE_WITHOUT_ACCOUNT_BTN = $(id("notImplementedYet"));
         UPDATE_DIALOG = $(xpath("//XCUIElementTypeAlert"));
-        UPDATE_INSTALL = $(xpath("x"));
-        UPDATE_LATER = $(xpath("x"));
+        UPDATE_INSTALL = $(xpath("notImplementedYet"));
+        UPDATE_LATER = $(xpath("notImplementedYet"));
         UPDATE_CONTINUE = $(id("Continue"));
         LOGIN_BTN = $(id("login-button"));
         USER_NAME_TEXT_BOX = $(xpath("//XCUIElementTypeTextField[@value='Username']"));

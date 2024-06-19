@@ -1,8 +1,10 @@
 package lib.ui.pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lib.BasePage;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends BasePage {
     protected SelenideElement
@@ -33,9 +35,9 @@ public class LoginPage extends BasePage {
     }
 
     public void loginWithCredentials(String userName, String password) {
-        LOGIN_BTN.shouldBe(Condition.visible).click();
+        LOGIN_BTN.shouldBe(visible).click();
         chromeOptionSelectIfDisplayed();
-        USER_NAME_TEXT_BOX.click();
+        USER_NAME_TEXT_BOX.shouldBe(visible).click();
         USER_NAME_TEXT_BOX.sendKeys(userName);
         PASSWORD_TEXT_BOX.click();
         PASSWORD_TEXT_BOX.sendKeys(password);
@@ -56,12 +58,16 @@ public class LoginPage extends BasePage {
     }
 
     public void updateApp() {
-        if (UPDATE_CONTINUE.isDisplayed()) {
-            updateContinue();
-        } else if (UPDATE_INSTALL.isDisplayed()) {
-            updateInstall();
-            super.closeAppFromAppSwitch();
-            super.activateApp();
+        Boolean isUpdateDialogDisplays = waitForElementIfExist(UPDATE_DIALOG, 1);
+
+        if (isUpdateDialogDisplays){
+            if (UPDATE_CONTINUE.isDisplayed()) {
+                updateContinue();
+            } else if (UPDATE_INSTALL.isDisplayed()) {
+                updateInstall();
+                super.closeAppFromAppSwitch();
+                super.activateApp();
+            }
         }
     }
 
@@ -70,7 +76,7 @@ public class LoginPage extends BasePage {
         if (UPDATE_CONTINUE.isDisplayed()) {
             UPDATE_CONTINUE.click();
             try {
-                Thread.sleep(4000);
+                Thread.sleep(5000);
             } catch (InterruptedException e) { /* Do nothing */ } //TODO:add reliable wait for update completed
         }
     }

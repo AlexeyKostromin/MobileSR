@@ -1,5 +1,7 @@
 package lib;
 
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import lib.ui.strategy.AndroidAppActionsStrategy;
 import lib.ui.strategy.AppActionsStrategy;
@@ -36,6 +38,15 @@ public class BasePage {
         }
     }
 
+
+    public Boolean waitForElementIfExist(SelenideElement element, int timeInSeconds){
+        try{
+            element.should(Condition.visible, Duration.ofSeconds(timeInSeconds));
+            return true;
+        } catch (AssertionError e){
+            return false;
+        }
+    }
     public void activateApp() {
         appStrategy.activateApp();
     }

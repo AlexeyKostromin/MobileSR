@@ -18,7 +18,7 @@ public class GamesPageAndroid extends GamesPage {
         FAVORITE_GAMES = $(xpath("//*[@resource-id='Favorites']"));
         ALL_GAMES = $(xpath("//*[@resource-id='AllGames']"));
         SCROLL_VIEW = $(xpath("//android.widget.ScrollView"));
-        GAMES_SUMMARY_ELEMENT = $(xpath("x"));
+        GAMES_SUMMARY_ELEMENT = $(xpath("notImplementedYet"));
         FILTERS = $(xpath("//*[@resource-id='SearchBarFilters'])"));
         FILTER_GO_BACK = $(xpath("//*[@content-desc='Go back']"));
         FILTER_SELECT_NBA = $(xpath("//*[@text='NBA']"));

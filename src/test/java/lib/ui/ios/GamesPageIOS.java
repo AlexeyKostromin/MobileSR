@@ -18,7 +18,7 @@ public class GamesPageIOS extends GamesPage {
         MY_GAMES = $(id("MyGames"));
         FAVORITE_GAMES = $(id("Favorites"));
         ALL_GAMES = $(id("AllGames"));
-        SCROLL_VIEW = $(id(""));
+        SCROLL_VIEW = $(id("notImplementedYet"));
         GAMES_SUMMARY_ELEMENT = $(xpath("//XCUIElementTypeOther[contains(@name, 'GameSummary')]"));
         FILTERS = $(id("SearchBarFilters"));
         FILTER_GO_BACK = $(id("Go back"));

@@ -17,7 +17,7 @@ public class DashboardPageAndroid extends DashboardPage {
         DRIVE_STRAIGHT_IT_BTN = $(id("DiveStraightInButton"));
         MAIN_MENU = $(id("drawerId"));
         SETTINGS = $(xpath("//*[@text='SETTINGS']"));
-        DOWNLOADS = $(xpath("x"));
+        DOWNLOADS = $(xpath("notImplementedYet"));
         PROFILE_SETTINGS = $(xpath("//*[@text='Profile Settings']"));
         CURRENT_SPORT_DROP_DOWN = $(id("textInput"));
         SPORT_BASKETBALL = $(xpath("//*[@text='Basketball']"));
@@ -28,7 +28,7 @@ public class DashboardPageAndroid extends DashboardPage {
         MENU_GAMES = $(xpath("//*[@content-desc='GAMES']"));
         GAMES_ACTION_ITEM = $(xpath("//*[@resource-id='GamesActionItem']"));
         EDITS_ACTION_ITEM = $(xpath("//*[@resource-id='EditsActionItem']"));
-        ANALYTICS_ACTION_ITEM = $(id("x"));
+        ANALYTICS_ACTION_ITEM = $(id("notImplementedYet"));
     }
 
 }

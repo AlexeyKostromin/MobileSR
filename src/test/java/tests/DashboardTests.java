@@ -97,7 +97,7 @@ public class DashboardTests extends TestBase {
     @Tag("android_local")
     @DisplayName("Launch app")
     void LaunchAppIOSTest() {
-        String USERNAME_STAGING = "rpro_orange@mailinator.com";
+        String USERNAME_STAGING = "hawks_staffmax@mailinator.com";
         String PASSWORD_STAGING = "Synergy2022@RANGe";
 
         LoginPage loginPage = PageFactory.getLoginPage();

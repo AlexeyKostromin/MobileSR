@@ -35,7 +35,8 @@ public class Platform {
     private void initConfig() {
         PLATFORM = System.getProperty("platform", PLATFORM_IOS);
         RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
-        APPIUM_URL = System.getProperty("appiumURL", "http://192.168.0.201:4723/");
+//        APPIUM_URL = System.getProperty("appiumURL", "http://192.168.0.201:4723/");
+        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.230:4723/");
     }
 
 //    private String setAppiumUrl() {
