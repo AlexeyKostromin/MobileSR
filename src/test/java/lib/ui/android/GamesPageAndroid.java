@@ -1,5 +1,6 @@
 package lib.ui.android;
 
+import com.codeborne.selenide.SelenideElement;
 import lib.ui.player.PlayerAndroid;
 import lib.ui.pages.GamesPage;
 
@@ -18,11 +19,14 @@ public class GamesPageAndroid extends GamesPage {
         FAVORITE_GAMES = $(xpath("//*[@resource-id='Favorites']"));
         ALL_GAMES = $(xpath("//*[@resource-id='AllGames']"));
         SCROLL_VIEW = $(xpath("//android.widget.ScrollView"));
-        GAMES_SUMMARY_ELEMENT = $(xpath("notImplementedYet"));
-        FILTERS = $(xpath("//*[@resource-id='SearchBarFilters'])"));
+        GAMES_SUMMARY_ELEMENT = $(xpath("//android.view.ViewGroup[contains(@resource-id, 'GameSummary')]"));
+        FILTERS = $(xpath("//*[@resource-id='SearchBarFilters']"));
         FILTER_GO_BACK = $(xpath("//*[@content-desc='Go back']"));
-        FILTER_SELECT_NBA = $(xpath("//*[@text='NBA']"));
 
         ALL_DISPLAYED_GAMES = $$(xpath("//android.widget.ScrollView//*[contains(@resource-id, 'GameSummary')]"));
+
+        FILTER_SELECT_TPL = "//*[@text='{LEAGUE}']";
     }
+
+
 }

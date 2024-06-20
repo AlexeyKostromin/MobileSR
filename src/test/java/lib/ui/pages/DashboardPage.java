@@ -1,6 +1,7 @@
 package lib.ui.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import lib.PageFactory;
 
 import static com.codeborne.selenide.Selenide.$;
 import static io.appium.java_client.AppiumBy.id;
@@ -57,8 +58,9 @@ public class DashboardPage {
         EDITS_ACTION_ITEM.click();
     }
 
-    public void openGames() {
+    public GamesPage openGames() {
         GAMES_ACTION_ITEM.click();
+        return PageFactory.getGamesPage();
     }
 
 

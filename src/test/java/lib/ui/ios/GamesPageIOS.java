@@ -22,8 +22,10 @@ public class GamesPageIOS extends GamesPage {
         GAMES_SUMMARY_ELEMENT = $(xpath("//XCUIElementTypeOther[contains(@name, 'GameSummary')]"));
         FILTERS = $(id("SearchBarFilters"));
         FILTER_GO_BACK = $(id("Go back"));
-        FILTER_SELECT_NBA = $(id("NBA"));
+//        FILTER_SELECT_NBA = $(id("NBA"));
 
         ALL_DISPLAYED_GAMES = $$(xpath("//XCUIElementTypeOther[contains(@name, 'GameSummary')]"));
+
+        FILTER_SELECT_TPL = "//*[@text='{LEAGUE}']";
     }
 }

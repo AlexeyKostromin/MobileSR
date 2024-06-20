@@ -46,8 +46,6 @@ public class DashboardTests extends TestBase {
 //        loginPage.allowPermissions();//move to method launch app
 
         loginPage.updateApp();
-        loginPage.closeAppFromAppSwitch();
-        loginPage.activateApp();
 
         loginPage.loginWithCredentials(USERNAME, PASSWORD);
 
@@ -56,42 +54,31 @@ public class DashboardTests extends TestBase {
 
         GamesPage gamesPage = PageFactory.getGamesPage();
         gamesPage.selectAllGames();
+        gamesPage.applyFilter("NBA");
         gamesPage.openFirstGame();
         gamesPage.player.pause();
         gamesPage.player.next();
-//        Player player = new Player();
-//        gamesPage.player.pause();
-//        player.next();
 
     }
-
     @Test
     @Tag("android_local")
     @DisplayName("Launch app")
-    void LaunchAppTest2() {
-        LoginPage loginPage = PageFactory.getLoginPage();
+    void AttachToAppTest() {
+
         DashboardPage dashboardPage = PageFactory.getDashboardPage();
-//        loginPage.allowPermissions();//move to method launch app
 
-//        loginPage.updateInstall();
-//        loginPage.closeAppFromAppSwitch();
-//        loginPage.activateApp();
+        GamesPage gamesPage = dashboardPage.openGames();
 
-        loginPage.loginWithCredentials(USERNAME, PASSWORD);
-
-        dashboardPage.skipIntro();
-        dashboardPage.openGames();
-
-        GamesPage gamesPage = PageFactory.getGamesPage();
         gamesPage.selectAllGames();
+        gamesPage.applyFilter("NBA");
         gamesPage.openFirstGame();
         gamesPage.player.pause();
         gamesPage.player.next();
-//        Player player = new Player();
-//        gamesPage.player.pause();
-//        player.next();
 
     }
+
+
+
 
     @Test
     @Tag("android_local")

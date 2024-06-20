@@ -86,6 +86,7 @@ public class DriverMobile implements WebDriverProvider {
                 .setApp(getAppPath())
                 .setAppPackage("com.sportradar.coaching.mobile")
                 .setAppActivity("com.sportradar.coaching.mobile.MainActivity")
+//                .noReset()
                 .setAvdLaunchTimeout(Duration.ofSeconds(30))   //wait until Android emulator is started
                 .setCapability("appium:disableIdLocatorAutocompletion", true);
         return options;
@@ -135,12 +136,13 @@ public class DriverMobile implements WebDriverProvider {
     private String getAppPathLocal() {
         String appPath = "";
 
-        String appName = "SynergySportsStaging-1.3.1.app";
+        String appNameAndroid = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
+        String appNameIOS = "SynergySportsStaging-1.3.1.app";
 
         if (isAndroid()) {
-            appPath = "src/test/resources/apps/" + appName;
+            appPath = "src/test/resources/apps/" + appNameAndroid;
         } else if (isIOS()) {
-            appPath = "src/test/resources/apps/" + appName;
+            appPath = "src/test/resources/apps/" + appNameIOS;
         }
 
         File app = new File(appPath);
@@ -153,15 +155,16 @@ public class DriverMobile implements WebDriverProvider {
     private String getAppPathRemote() {
         String appPath = "";
 
-        String appName = "SynergySportsStaging-1.3.1.app";
+        String appNameAndroid = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
+        String appNameIOS = "SynergySportsStaging-1.3.1.app";
 
         if (isAndroid()) {
-            appPath = "src/test/resources/apps/" + appName;
+            appPath = "src/test/resources/apps/" + appNameAndroid;
         } else if (isIOS() && isMacRuntimeEnv()) {
             String localPath = "/Users/o.kostromin/@Builds/iOS/";
-            appPath = localPath + appName;
+            appPath = localPath + appNameIOS;
         } else if (isIOS()) {
-            appPath = "src/test/resources/" + appName;
+            appPath = "src/test/resources/" + appNameIOS;
         }
 
         File app = new File(appPath);
@@ -170,8 +173,6 @@ public class DriverMobile implements WebDriverProvider {
 //        }
         return appPath;
     }
-
-
 
 
 //    private String getAppPath() {
