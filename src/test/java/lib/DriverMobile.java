@@ -21,9 +21,11 @@ import static lib.Platform.*;
 
 
 public class DriverMobile implements WebDriverProvider {
-    private RemoteWebDriver driver;//? WebDriver was here before!
+    private static RemoteWebDriver driver;//? WebDriver was here before!
     private static UiAutomator2Options androidOptions;
     private static UiAutomator2Options IOSOptions;
+    private static final String appPackage = "com.sportradar.coaching.mobile";
+    private static final String appActivity = "com.sportradar.coaching.mobile.MainActivity";
 
     @Nonnull
     @Override
@@ -31,25 +33,21 @@ public class DriverMobile implements WebDriverProvider {
         return initDriver();
     }
 
-//    public RemoteWebDriver getDriver(){
-//        return driver;
-//    }
 
-    //    public WebDriver getDriver() {
-//        if (Platform.isAndroid()) {
-//            return new AndroidDriver(getAppiumServerUrl(), getOptionsAndroid());
-//        } else if (Platform.isIOS()) {
-//            return new IOSDriver(getAppiumServerUrl(), getOptionsIOS());
-//        } else {
-//            throw new RuntimeException("Driver could not be determined");
-//        }
-//    }
     public static UiAutomator2Options getAndroidOptions() {
         return androidOptions;
     }
 
     public static UiAutomator2Options getIOSOptions() {
         return IOSOptions;
+    }
+
+    public static String getAppPackage() {
+        return appPackage;
+    }
+
+    public static String getAppActivity() {
+        return appActivity;
     }
 
     public RemoteWebDriver initDriver() {
@@ -63,19 +61,20 @@ public class DriverMobile implements WebDriverProvider {
         return driver;
     }
 
+    private UiAutomator2Options getOptionsAndroid() {
+        UiAutomator2Options options = new UiAutomator2Options();
+        androidOptions = options;
 
-    public void installuninstallapp() {
-//        ((AppiumDriver)driver).removeApp(<package name>); // Remove the specified app from the device (uninstall)
-//        ((AppiumDriver)driver).installApp(<path to apk>); // Install an app on the mobile device
-//        ((AppiumDriver)driver).closeApp(); // Close the app which was provided in the capabilities at session creation
-//
-//        ((AppiumDriver)driver).close(); // from *RemoteWebDriver.java*, used to close the current browser page
-//
-//        ((AppiumDriver)driver).quit(); // quits the session created between the client and the server
+        options.setAutomationName(ANDROID_UIAUTOMATOR2)
+                .setPlatformName(ANDROID)
+                .setPlatformVersion("14.0")
+                .setDeviceName("Pixel6")
+                .noReset()
+                .setCapability("appium:disableIdLocatorAutocompletion", true);
+        return options;
     }
 
-
-    private UiAutomator2Options getOptionsAndroid() {
+    private UiAutomator2Options getOptionsAndroid1() {
         UiAutomator2Options options = new UiAutomator2Options();
         androidOptions = options;
 
@@ -84,13 +83,14 @@ public class DriverMobile implements WebDriverProvider {
                 .setPlatformVersion("14.0")
                 .setDeviceName("Pixel7")
                 .setApp(getAppPath())
-                .setAppPackage("com.sportradar.coaching.mobile")
-                .setAppActivity("com.sportradar.coaching.mobile.MainActivity")
+                .setAppPackage(appPackage)
+                .setAppActivity(appActivity)
 //                .noReset()
                 .setAvdLaunchTimeout(Duration.ofSeconds(30))   //wait until Android emulator is started
                 .setCapability("appium:disableIdLocatorAutocompletion", true);
         return options;
     }
+
 
     private UiAutomator2Options getOptionsIOS() {
         UiAutomator2Options options = new UiAutomator2Options();
@@ -101,8 +101,8 @@ public class DriverMobile implements WebDriverProvider {
                 .setPlatformVersion("17.5")
                 .setDeviceName("iPhone 15")
                 .setApp(getAppPath())
-                .setAppPackage("com.sportradar.coaching.mobile")
-                .setAppActivity("com.sportradar.coaching.mobile.MainActivity")
+                .setAppPackage(appPackage)
+                .setAppActivity(appActivity)
                 .setAvdLaunchTimeout(Duration.ofSeconds(30));   //wait until Android emulator is started
 //                .setCapability("appium:disableIdLocatorAutocompletion", true);
         return options;
@@ -126,14 +126,14 @@ public class DriverMobile implements WebDriverProvider {
 //        }
 //    }
 
-    private String getAppPath() {
+    public static String getAppPath() {
         if (isLocalHostRuntimeEnv()) {
             return getAppPathLocal();
         } else
             return getAppPathRemote();
     }
 
-    private String getAppPathLocal() {
+    private static String getAppPathLocal() {
         String appPath = "";
 
         String appNameAndroid = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
@@ -152,7 +152,7 @@ public class DriverMobile implements WebDriverProvider {
         return app.getAbsolutePath();
     }
 
-    private String getAppPathRemote() {
+    private static String getAppPathRemote() {
         String appPath = "";
 
         String appNameAndroid = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";

@@ -1,5 +1,6 @@
 package lib.ui.android;
 
+import com.codeborne.selenide.Condition;
 import lib.ui.pages.LoginPage;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -24,5 +25,12 @@ public class LoginPageAndroid extends LoginPage {
         USER_NAME_TEXT_BOX = $(id("Username"));
         PASSWORD_TEXT_BOX = $(id("Password"));
         LOGIN_FORM_BTN = $(xpath("//*[@text='Login']"));
+        VERSION = $(xpath("//android.widget.TextView[contains(@text, 'Version')]"));
+    }
+
+    @Override
+    public String getCurrentVersion() {
+        VERSION.shouldBe(Condition.visible);
+        return VERSION.getText();
     }
 }

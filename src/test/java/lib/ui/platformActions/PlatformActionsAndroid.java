@@ -1,4 +1,4 @@
-package lib.ui.strategy;
+package lib.ui.platformActions;
 
 import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.android.AndroidDriver;
@@ -8,24 +8,37 @@ import lib.BasePage;
 
 import java.time.Duration;
 
-public class AndroidAppActionsStrategy implements AppActionsStrategy {
-    private BasePage basePage;
+import static lib.DriverMobile.getAppPackage;
+import static lib.DriverMobile.getAppPath;
+
+public class PlatformActionsAndroid implements PlatformActionsStrategy {
     private AndroidDriver androidDriver;
 
-    public AndroidAppActionsStrategy(BasePage basePage) {
-        this.basePage = basePage;
+    public PlatformActionsAndroid() {
         this.androidDriver = (AndroidDriver) WebDriverRunner.getWebDriver();
     }
 
     @Override
     public void activateApp() {
-//        androidDriver.activateApp(getAndroidOptions().getAppPackage().get());
-        //TODO:remove hardcoded value
-        String packageName = "com.sportradar.coaching.mobile";
-        androidDriver.activateApp(packageName);
+        androidDriver.activateApp(getAppPackage());
     }
 
+    @Override
+    public void installApp() {
+        if (androidDriver.isAppInstalled(getAppPackage())) {
+            uninstallApp();
+        }
+        androidDriver.installApp(getAppPath());
+    }
+
+    @Override
+    public void uninstallApp() {
+        androidDriver.removeApp(getAppPackage());
+    }
+
+    @Override
     public void terminateApp() {
+        androidDriver.terminateApp(getAppPackage());
     }
 
     @Override
@@ -39,9 +52,14 @@ public class AndroidAppActionsStrategy implements AppActionsStrategy {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        basePage.swipeUpQuick();
+        BasePage.swipeUpQuick();
 
         androidDriver.pressKey(new KeyEvent(AndroidKey.HOME));
+    }
+
+    @Override
+    public void pressHomeButton() {
+
     }
 
     @Override

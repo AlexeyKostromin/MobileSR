@@ -1,5 +1,6 @@
 package lib.ui.ios;
 
+import com.codeborne.selenide.Condition;
 import lib.ui.pages.LoginPage;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -24,5 +25,11 @@ public class LoginPageIOS extends LoginPage {
         USER_NAME_TEXT_BOX = $(xpath("//XCUIElementTypeTextField[@value='Username']"));
         PASSWORD_TEXT_BOX = $(xpath("//XCUIElementTypeSecureTextField[@value='Password']"));
         LOGIN_FORM_BTN = $(id("Login"));
+        VERSION = $(xpath("//XCUIElementTypeStaticText[contains(@name, 'Version')]"));
+    }
+    @Override
+    public String getCurrentVersion() {
+        VERSION.shouldBe(Condition.visible);
+        return VERSION.attr("name");
     }
 }

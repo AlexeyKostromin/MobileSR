@@ -1,13 +1,19 @@
-package lib.ui.strategy;
+package lib.ui.platformActions;
 
 import java.time.Duration;
 
-public interface AppActionsStrategy {
+public interface PlatformActionsStrategy {
     void activateApp();
 
     void terminateApp();
 
     void closeAppFromAppSwitch();
 
+    void pressHomeButton();
+
     void runAppInBackground(Duration duration);
+
+    void installApp();
+
+    void uninstallApp();
 }

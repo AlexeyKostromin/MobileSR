@@ -1,12 +1,10 @@
 package lib.ui.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import lib.BasePage;
 import lib.PageFactory;
 
-import static com.codeborne.selenide.Selenide.$;
-import static io.appium.java_client.AppiumBy.id;
-
-public class DashboardPage {
+public class DashboardPage extends BasePage {
 
     public SelenideElement
 

@@ -1,8 +1,7 @@
-package lib.ui.strategy;
+package lib.ui.platformActions;
 
 import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.ios.IOSDriver;
-import lib.BasePage;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
@@ -11,15 +10,22 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class IOSAppActionsStrategy implements AppActionsStrategy {
-    private BasePage basePage;
+public class PlatformActionsIOS implements PlatformActionsStrategy {
     private IOSDriver iosDriver;
 
-    public IOSAppActionsStrategy(BasePage basePage) {
-        this.basePage = basePage;
+    public PlatformActionsIOS() {
         this.iosDriver = (IOSDriver) WebDriverRunner.getWebDriver();
     }
 
+    @Override
+    public void installApp() {
+
+    }
+
+    @Override
+    public void uninstallApp() {
+
+    }
     @Override
     public void activateApp() {
         //TODO:remove hardcoded value
@@ -37,7 +43,7 @@ public class IOSAppActionsStrategy implements AppActionsStrategy {
     @Override
     public void closeAppFromAppSwitch() {
         swipeToOpenAppSwitch();
-        basePage.swipeUpQuick();
+
 //        //Wait for the recent apps screen to open
 //        //TODO: replace sleep with check for the app is displayed/exist, and not exist after swipe
 //        try {
@@ -68,6 +74,7 @@ public class IOSAppActionsStrategy implements AppActionsStrategy {
         iosDriver.perform(Arrays.asList(swipe));
     }
 
+    @Override
     public void pressHomeButton() {
         HashMap<String, String> args = new HashMap<>();
         args.put("name", "home");
@@ -78,5 +85,7 @@ public class IOSAppActionsStrategy implements AppActionsStrategy {
     public void runAppInBackground(Duration duration) {
 
     }
+
+
 
 }

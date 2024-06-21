@@ -17,15 +17,15 @@ import static lib.Platform.isIOS;
 
 public class PageFactory {
 
-    public static BasePage getBasePage() {
-        if (isAndroid()) {
-            return new BasePage();
-        } else if (isIOS()) {
-            return new BasePage();
-        } else {
-            throw new IllegalStateException("Unsupported platform");
-        }
-    }
+//    public static PlatformActions getBasePage() {
+//        if (isAndroid()) {
+//            return new PlatformActions(this);
+//        } else if (isIOS()) {
+//            return new PlatformActions(this);
+//        } else {
+//            throw new IllegalStateException("Unsupported platform");
+//        }
+//    }
 
     public static LoginPage getLoginPage() {
         if (isAndroid()) {

@@ -1,10 +1,11 @@
 package lib.ui.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lib.BasePage;
+import lib.PageFactory;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends BasePage {
     protected SelenideElement
@@ -18,23 +19,19 @@ public class LoginPage extends BasePage {
             USER_NAME_TEXT_BOX,
             PASSWORD_TEXT_BOX,
             LOGIN_BTN,
-            LOGIN_FORM_BTN;
+            LOGIN_FORM_BTN,
+            VERSION;
 
     public LoginPage() {
 
     }
 
 
-    public void loginWithUpgrade(String userName, String password) {
-        if (updateInstall()) {
-
-            loginWithCredentials(userName, password);
-        } else {
-            loginWithCredentials(userName, password);
-        }
+    protected String getCurrentVersion() {
+        return null;
     }
 
-    public void loginWithCredentials(String userName, String password) {
+    public DashboardPage loginWithCredentials(String userName, String password) {
         LOGIN_BTN.shouldBe(visible).click();
         chromeOptionSelectIfDisplayed();
         USER_NAME_TEXT_BOX.shouldBe(visible).click();
@@ -42,6 +39,7 @@ public class LoginPage extends BasePage {
         PASSWORD_TEXT_BOX.click();
         PASSWORD_TEXT_BOX.sendKeys(password);
         LOGIN_FORM_BTN.click();
+        return PageFactory.getDashboardPage();
     }
 
     public void allowPermissions() {
@@ -58,28 +56,47 @@ public class LoginPage extends BasePage {
     }
 
     public void updateApp() {
-        Boolean isUpdateDialogDisplays = waitForElementIfExist(UPDATE_DIALOG, 1);
+//        var currentVersion = getCurrentVersion();
+        Boolean isUpdateDialogDisplays = waitForElementIfExist(UPDATE_DIALOG, 5);
 
-        if (isUpdateDialogDisplays){
+        if (isUpdateDialogDisplays) {
             if (UPDATE_CONTINUE.isDisplayed()) {
                 updateContinue();
             } else if (UPDATE_INSTALL.isDisplayed()) {
                 updateInstall();
-                super.closeAppFromAppSwitch();
-                super.activateApp();
+                platformActions.closeAppFromAppSwitch();
+                platformActions.activateApp();
             }
+//            var newVersion = getCurrentVersion();
         }
     }
 
 
     private void updateContinue() {
+//        var currentVersion = getCurrentVersion();
+        var newVersion = "";
+
         if (UPDATE_CONTINUE.isDisplayed()) {
             UPDATE_CONTINUE.click();
+//            while (currentVersion.equals(newVersion)){
+//                newVersion= getCurrentVersion();
+//
+//            }
+
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) { /* Do nothing */ } //TODO:add reliable wait for update completed
         }
     }
+
+//    private void updateContinue() {
+//        if (UPDATE_CONTINUE.isDisplayed()) {
+//            UPDATE_CONTINUE.click();
+//            try {
+//                Thread.sleep(5000);
+//            } catch (InterruptedException e) { /* Do nothing */ } //TODO:add reliable wait for update completed
+//        }
+//    }
 
 
     private Boolean updateInstall() {

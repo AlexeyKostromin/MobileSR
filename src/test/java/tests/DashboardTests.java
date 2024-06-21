@@ -1,6 +1,7 @@
 package tests;
 
 import lib.PageFactory;
+import lib.PlatformActions;
 import lib.ui.pages.DashboardPage;
 import lib.ui.pages.GamesPage;
 import lib.ui.pages.LoginPage;
@@ -64,8 +65,29 @@ public class DashboardTests extends TestBase {
     @Tag("android_local")
     @DisplayName("Launch app")
     void AttachToAppTest() {
-
         DashboardPage dashboardPage = PageFactory.getDashboardPage();
+        GamesPage gamesPage = dashboardPage.openGames();
+
+        gamesPage.selectAllGames();
+        gamesPage.applyFilter("NBA");
+        gamesPage.openFirstGame();
+        gamesPage.player.pause();
+        gamesPage.player.next();
+    }
+
+    @Test
+    @Tag("android_local")
+    @DisplayName("Launch app")
+    void InstallAndAttachToAppTest() {
+        PlatformActions platformActions = new PlatformActions();
+        platformActions.installApp();
+        platformActions.activateApp();
+
+        LoginPage loginPage = PageFactory.getLoginPage();
+        loginPage.updateApp();
+        DashboardPage dashboardPage = loginPage.loginWithCredentials(USERNAME, PASSWORD);
+
+        dashboardPage.skipIntro();
 
         GamesPage gamesPage = dashboardPage.openGames();
 
@@ -76,8 +98,6 @@ public class DashboardTests extends TestBase {
         gamesPage.player.next();
 
     }
-
-
 
 
     @Test
@@ -102,10 +122,6 @@ public class DashboardTests extends TestBase {
         gamesPage.openFirstGame();
         gamesPage.player.pause();
         gamesPage.player.next();
-//        Player player = new Player();
-//        gamesPage.player.pause();
-//        player.next();
-
     }
 
 }

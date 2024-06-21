@@ -1,8 +1,9 @@
-package lib.ui.strategy;
+package lib.ui.platformActions;
 
 import com.codeborne.selenide.WebDriverRunner;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.InteractsWithApps;
+import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.IOSMobileCapabilityType;
@@ -23,10 +24,26 @@ public class uAndroidAppCommands {
 
     }
 
+    public void installuninstallapp() {
+//        ((AppiumDriver)driver).close(); // from *RemoteWebDriver.java*, used to close the current browser page
+//        ((AppiumDriver)driver).quit(); // quits the session created between the client and the server
+    }
+
+    public void closeApp() {
+//        androidDriver.closeApp(); //Deprecated - Close the app which was provided in the capabilities at session creation
+    }
+
     public void activateApp() {
 //        androidDriver.activateApp(getAndroidOptions().getAppPackage().get());
         String packageName = "com.sportradar.coaching.mobile";
         androidDriver.activateApp(packageName);
+    }
+
+    public void activateApp2() {
+        String appPackage = "com.sportradar.coaching.mobile";
+        String appActivity = "com.sportradar.coaching.mobile.MainActivity";
+
+        androidDriver.startActivity(new Activity(appPackage, appActivity));
     }
 
 
