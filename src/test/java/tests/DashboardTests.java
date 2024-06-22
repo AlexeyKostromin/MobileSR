@@ -65,7 +65,13 @@ public class DashboardTests extends TestBase {
     @Tag("android_local")
     @DisplayName("Launch app")
     void AttachToAppTest() {
-        DashboardPage dashboardPage = PageFactory.getDashboardPage();
+        LoginPage loginPage = PageFactory.getLoginPage();
+//        loginPage.updateApp();
+        DashboardPage dashboardPage = loginPage.loginWithCredentials(USERNAME, PASSWORD);
+
+        dashboardPage.skipIntro();
+
+//        DashboardPage dashboardPage = PageFactory.getDashboardPage();
         GamesPage gamesPage = dashboardPage.openGames();
 
         gamesPage.selectAllGames();
@@ -119,6 +125,32 @@ public class DashboardTests extends TestBase {
 
         GamesPage gamesPage = PageFactory.getGamesPage();
         gamesPage.selectAllGames();
+        gamesPage.openFirstGame();
+        gamesPage.player.pause();
+        gamesPage.player.next();
+    }
+
+    @Test
+    @Tag("android_local")
+    @DisplayName("Launch app")
+    void InstallAppIOSTest() {
+        String USERNAME_STAGING = "hawks_staffmax@mailinator.com";
+        String PASSWORD_STAGING = "Synergy2022@RANGe";
+
+        PlatformActions platformActions = new PlatformActions();
+        platformActions.installApp();
+        platformActions.activateApp();
+
+        LoginPage loginPage = PageFactory.getLoginPage();
+        loginPage.updateApp();
+        DashboardPage dashboardPage = loginPage.loginWithCredentials(USERNAME_STAGING, PASSWORD_STAGING);
+
+        dashboardPage.skipIntro();
+        dashboardPage.openGames();
+
+        GamesPage gamesPage = PageFactory.getGamesPage();
+        gamesPage.selectAllGames();
+        gamesPage.applyFilter("NBA");
         gamesPage.openFirstGame();
         gamesPage.player.pause();
         gamesPage.player.next();

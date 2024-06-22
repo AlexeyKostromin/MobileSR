@@ -10,6 +10,9 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import static lib.DriverMobile.getAppPackage;
+import static lib.DriverMobile.getAppPath;
+
 public class PlatformActionsIOS implements PlatformActionsStrategy {
     private IOSDriver iosDriver;
 
@@ -19,24 +22,26 @@ public class PlatformActionsIOS implements PlatformActionsStrategy {
 
     @Override
     public void installApp() {
-
+        if (iosDriver.isAppInstalled(getAppPackage())) {
+            uninstallApp();
+        }
+        iosDriver.installApp(getAppPath());
     }
 
     @Override
     public void uninstallApp() {
+        iosDriver.removeApp(getAppPackage());
 
     }
     @Override
     public void activateApp() {
-        //TODO:remove hardcoded value
-        String bundleID = "com.sportradar.coaching.mobile.staging";
+        String bundleID = getAppPackage();
         iosDriver.activateApp(bundleID);
     }
 
     @Override
     public void terminateApp() {
-        //TODO:remove hardcoded value
-        String bundleID = "com.sportradar.coaching.mobile.staging";
+        String bundleID = getAppPackage();
         iosDriver.terminateApp(bundleID);
     }
 

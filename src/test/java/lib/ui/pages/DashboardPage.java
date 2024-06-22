@@ -32,7 +32,7 @@ public class DashboardPage extends BasePage {
 
     public void skipIntro() {
         SKIP_FOR_NOW.click();
-        DRIVE_STRAIGHT_IT_BTN.click();
+        tryClickElementWithAttempts(DRIVE_STRAIGHT_IT_BTN, 3);
     }
 
     public void goToProfileSettings() {

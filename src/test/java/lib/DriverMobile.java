@@ -24,8 +24,10 @@ public class DriverMobile implements WebDriverProvider {
     private static RemoteWebDriver driver;//? WebDriver was here before!
     private static UiAutomator2Options androidOptions;
     private static UiAutomator2Options IOSOptions;
-    private static final String appPackage = "com.sportradar.coaching.mobile";
-    private static final String appActivity = "com.sportradar.coaching.mobile.MainActivity";
+//    private static final String appPackage = "com.sportradar.coaching.mobile";
+    private static final String appPackage = "com.sportradar.coaching.mobile.staging";
+//    private static final String appActivity = "com.sportradar.coaching.mobile.MainActivity";
+    private static final String appActivity = "com.sportradar.coaching.mobile.staging.MainActivity";
 
     @Nonnull
     @Override
@@ -67,10 +69,25 @@ public class DriverMobile implements WebDriverProvider {
 
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
                 .setPlatformName(ANDROID)
-                .setPlatformVersion("14.0")
-                .setDeviceName("Pixel6")
+                .setPlatformVersion("13.0")
+                .setDeviceName("Pixel7Pro")
                 .noReset()
+                .setAvdLaunchTimeout(Duration.ofSeconds(60))   //wait until Android emulator is started
                 .setCapability("appium:disableIdLocatorAutocompletion", true);
+        return options;
+    }
+
+    private UiAutomator2Options getOptionsIOS() {
+        UiAutomator2Options options = new UiAutomator2Options();
+        IOSOptions = options;
+
+        options.setAutomationName(IOS_XCUI_TEST)
+                .setPlatformName(IOS)
+                .setPlatformVersion("17.5")
+                .setDeviceName("iPhone 15")
+                .noReset()
+                .setAvdLaunchTimeout(Duration.ofSeconds(30));   //wait until Android emulator is started
+//                .setCapability("appium:disableIdLocatorAutocompletion", true);
         return options;
     }
 
@@ -80,19 +97,21 @@ public class DriverMobile implements WebDriverProvider {
 
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
                 .setPlatformName(ANDROID)
-                .setPlatformVersion("14.0")
+                .setPlatformVersion("13.0")
                 .setDeviceName("Pixel7")
                 .setApp(getAppPath())
                 .setAppPackage(appPackage)
                 .setAppActivity(appActivity)
 //                .noReset()
                 .setAvdLaunchTimeout(Duration.ofSeconds(30))   //wait until Android emulator is started
+                .setNewCommandTimeout(Duration.ofSeconds(60)) // waits for a new command from your test script) before considering the session idle and potentially terminating it.
                 .setCapability("appium:disableIdLocatorAutocompletion", true);
         return options;
     }
 
 
-    private UiAutomator2Options getOptionsIOS() {
+
+    private UiAutomator2Options getOptionsIOS1() {
         UiAutomator2Options options = new UiAutomator2Options();
         IOSOptions = options;
 

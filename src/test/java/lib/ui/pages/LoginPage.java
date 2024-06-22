@@ -12,6 +12,8 @@ public class LoginPage extends BasePage {
             PERMISSION_ALLOW_BTN,
             CHROME_WELCOME_PAGE,
             CHROME_USE_WITHOUT_ACCOUNT_BTN,
+            CHROME_ACCEPT_AND_CONTINUE_BTN,
+            CHROME_NO_THANKS_BTN,
             UPDATE_DIALOG,
             UPDATE_INSTALL,
             UPDATE_LATER,
@@ -163,7 +165,8 @@ public class LoginPage extends BasePage {
                 if (USER_NAME_TEXT_BOX.isDisplayed()) {
                     return;
                 } else if (CHROME_WELCOME_PAGE.isDisplayed()) {
-                    chromeUseWithoutAccountSelect();
+//                    chromeUseWithoutAccountSelect();
+                    chromeAcceptTerms();
                     return;
                 }
             } catch (Exception e) {
@@ -176,16 +179,32 @@ public class LoginPage extends BasePage {
         }
     }
 
+
+    private void chromeAcceptTerms() {
+        if (CHROME_USE_WITHOUT_ACCOUNT_BTN.isDisplayed()) {
+            chromeUseWithoutAccountSelect();
+        } else if (CHROME_ACCEPT_AND_CONTINUE_BTN.isDisplayed()) {
+            chromeAcceptAndContinueSelect();
+        }
+    }
+
     private void chromeUseWithoutAccountSelect() {
-        if (CHROME_WELCOME_PAGE.exists()) {
-            try {
-                CHROME_USE_WITHOUT_ACCOUNT_BTN.click();
-            } catch (Exception e) {
-                System.err.println("Failed to click the 'Use without an account' button");
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("There was no Chrome welcome page dialog");
+        try {
+            CHROME_USE_WITHOUT_ACCOUNT_BTN.click();
+        } catch (Exception e) {
+            System.err.println("Failed to click the 'Use without an account' button");
+            e.printStackTrace();
+        }
+    }
+
+    private void chromeAcceptAndContinueSelect() {
+        try {
+            CHROME_ACCEPT_AND_CONTINUE_BTN.click();
+//            tryClickElementWithAttempts(CHROME_NO_THANKS_BTN, 5);
+            CHROME_NO_THANKS_BTN.shouldBe(visible).click();
+        } catch (Exception e) {
+            System.err.println("Failed to click the 'Accept and Continue' button");
+            e.printStackTrace();
         }
     }
 
