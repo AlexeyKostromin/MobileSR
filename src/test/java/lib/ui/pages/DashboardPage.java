@@ -1,5 +1,6 @@
 package lib.ui.pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lib.BasePage;
 import lib.PageFactory;
@@ -7,9 +8,10 @@ import lib.PageFactory;
 public class DashboardPage extends BasePage {
 
     public SelenideElement
-
-            SKIP_FOR_NOW,
-            DRIVE_STRAIGHT_IT_BTN,
+            WELCOME_PAGE_THE_FINAL_THIRD,
+            WELCOME_PAGE_SKIP_FOR_NOW,
+            WELCOME_PAGE_WELCOME_TO_THE_TEAM,
+            WELCOME_PAGE_DRIVE_STRAIGHT_IT_BTN,
             MAIN_MENU,
             SETTINGS,
             DOWNLOADS,
@@ -29,10 +31,17 @@ public class DashboardPage extends BasePage {
 
     }
 
-
     public void skipIntro() {
-        SKIP_FOR_NOW.click();
-        tryClickElementWithAttempts(DRIVE_STRAIGHT_IT_BTN, 3);
+        var welcomeFinalThirdPage = WELCOME_PAGE_THE_FINAL_THIRD;
+        welcomeFinalThirdPage.shouldBe(Condition.visible);
+        WELCOME_PAGE_SKIP_FOR_NOW.click();
+        welcomeFinalThirdPage.shouldBe(Condition.disappear);
+
+        var welcomeToTheTeamPage = WELCOME_PAGE_WELCOME_TO_THE_TEAM;
+        welcomeToTheTeamPage.shouldBe(Condition.exist);
+        WELCOME_PAGE_DRIVE_STRAIGHT_IT_BTN.shouldBe(Condition.exist).click();
+        welcomeToTheTeamPage.shouldBe(Condition.not(Condition.visible));
+//        tryClickElementAndWaitNotVisible(WELCOME_PAGE_DRIVE_STRAIGHT_IT_BTN, 3);
     }
 
     public void goToProfileSettings() {

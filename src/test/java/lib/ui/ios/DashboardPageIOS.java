@@ -1,6 +1,5 @@
 package lib.ui.ios;
 
-import com.codeborne.selenide.SelenideElement;
 import lib.ui.pages.DashboardPage;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -15,8 +14,10 @@ public class DashboardPageIOS extends DashboardPage {
     }
 
     protected void initElements() {
-        SKIP_FOR_NOW = $(id("Skip for now"));
-        DRIVE_STRAIGHT_IT_BTN = $(id("DiveStraightInButton"));
+        WELCOME_PAGE_THE_FINAL_THIRD = $(id("THE FINAL THIRD"));
+        WELCOME_PAGE_SKIP_FOR_NOW = $(id("Skip for now"));
+        WELCOME_PAGE_WELCOME_TO_THE_TEAM = $(id("WELCOME TO THE TEAM"));
+        WELCOME_PAGE_DRIVE_STRAIGHT_IT_BTN = $(id("DiveStraightInButton"));
         MAIN_MENU = $(id("drawerId"));
         SETTINGS = $(xpath("//XCUIElementTypeButton[@name='SETTINGS']"));
         DOWNLOADS = $(xpath("//XCUIElementTypeButton[contains(@name, 'DOWNLOADS')]"));

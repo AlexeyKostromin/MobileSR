@@ -13,8 +13,10 @@ public class DashboardPageAndroid extends DashboardPage {
     }
 
     protected void initElements() {
-        SKIP_FOR_NOW = $(xpath("//*[@text='Skip for now']"));
-        DRIVE_STRAIGHT_IT_BTN = $(id("DiveStraightInButton"));
+        WELCOME_PAGE_THE_FINAL_THIRD = $(id("@@@notImplementedYet"));
+        WELCOME_PAGE_SKIP_FOR_NOW = $(xpath("//*[@text='Skip for now']"));
+        WELCOME_PAGE_WELCOME_TO_THE_TEAM = $(id("@@@notImplementedYet"));
+        WELCOME_PAGE_DRIVE_STRAIGHT_IT_BTN = $(id("DiveStraightInButton"));
         MAIN_MENU = $(id("drawerId"));
         SETTINGS = $(xpath("//*[@text='SETTINGS']"));
         DOWNLOADS = $(xpath("notImplementedYet"));
@@ -28,7 +30,7 @@ public class DashboardPageAndroid extends DashboardPage {
         MENU_GAMES = $(xpath("//*[@content-desc='GAMES']"));
         GAMES_ACTION_ITEM = $(xpath("//*[@resource-id='GamesActionItem']"));
         EDITS_ACTION_ITEM = $(xpath("//*[@resource-id='EditsActionItem']"));
-        ANALYTICS_ACTION_ITEM = $(id("notImplementedYet"));
+        ANALYTICS_ACTION_ITEM = $(id("@@@notImplementedYet"));
     }
 
 }

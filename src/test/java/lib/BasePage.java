@@ -12,8 +12,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 
 import static com.codeborne.selenide.Selenide.sleep;
@@ -47,9 +45,9 @@ public class BasePage {
         }
     }
 
-    public static void tryClickElementWithAttempts(SelenideElement element, int attempts) {
+    public static void tryClickElementAndWaitNotVisible(SelenideElement element, int attempts) {
         int currentAttempts = 0;
-
+        element.shouldBe(Condition.exist);
         while (currentAttempts < attempts) {
             try {
                 WebElement webElement = element.toWebElement();
