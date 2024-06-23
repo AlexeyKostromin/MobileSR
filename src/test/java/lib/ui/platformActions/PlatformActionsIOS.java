@@ -10,8 +10,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import static lib.DriverMobile.getAppPackage;
-import static lib.DriverMobile.getAppPath;
+import static lib.DriverMobile.*;
 
 public class PlatformActionsIOS implements PlatformActionsStrategy {
     private IOSDriver iosDriver;

@@ -73,8 +73,8 @@ public class BasePage {
     public static void swipeUp(int timeOfScroll) {
         Dimension size = driver.manage().window().getSize();
         int centerX = size.width / 2;
-        int startY = (int) (size.height * 0.70); // Start near the bottom
-        int endY = (int) (size.height * 0.20); // End near the top
+        int startY = (int) (size.height * 0.80); // Start near the bottom
+        int endY = (int) (size.height * 0.10); // End near the top
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence swipe = new Sequence(finger, 1)

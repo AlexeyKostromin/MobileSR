@@ -8,6 +8,9 @@ public class Platform {
     private static String APPIUM_URL;
     private final static String PLATFORM_ANDROID = "android";
     private final static String PLATFORM_IOS = "ios";
+    private static String BUILD_TYPE;
+    private static String PLATFORM_VERSION;
+    private static String DEVICE_NAME;
     private final static String RUNTIME_ENV_LOCALHOST = "localHostRuntimeEnv";
     private final static String RUNTIME_ENV_WINDOWS = "windowsRuntimeEnv";
     private final static String RUNTIME_ENV_MAC = "macRuntimeEnv";
@@ -26,39 +29,39 @@ public class Platform {
         return instance;
     }
 
+    //WINDOWS ANDROID
 //    private void initConfig() {
 //        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
 //        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_LOCALHOST);
+//        BUILD_TYPE = System.getProperty("buildType", "live");
+//        PLATFORM_VERSION = System.getProperty("platformVersion", "14.0");
+//        DEVICE_NAME = System.getProperty("deviceName", "Pixel7");
 //        APPIUM_URL = System.getProperty("appiumURL", "http://127.0.0.1:4723/");
 //    }
 
+    //MAC IOS
+//    private void initConfig() {
+//        PLATFORM = System.getProperty("platform", PLATFORM_IOS);
+//        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
+//        BUILD_TYPE = System.getProperty("buildType", "staring");
+//        PLATFORM_VERSION = System.getProperty("platformVersion", "17.5");
+//        DEVICE_NAME = System.getProperty("deviceName", "iPhone 15");
+//        APPIUM_URL = System.getProperty("appiumURL", "http://192.168.0.200:4723/");
+////        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.230:4723/");
+//    }
+
+    //MAC ANDROID
     private void initConfig() {
-        PLATFORM = System.getProperty("platform", PLATFORM_IOS);
+        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
         RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
+        BUILD_TYPE = System.getProperty("buildType", "live");
+        PLATFORM_VERSION = System.getProperty("platformVersion", "14.0");
+        DEVICE_NAME = System.getProperty("deviceName", "Pixel7");
         APPIUM_URL = System.getProperty("appiumURL", "http://192.168.0.200:4723/");
 //        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.230:4723/");
     }
 
-//    private String setAppiumUrl() {
-//        if (isWindowsRuntimeEnv()) {
-//            APPIUM_URL = WINDOWS_APPIUM_URL;
-//        } else if (isMacRuntimeEnv()) {
-//            APPIUM_URL = MAC_APPIUM_URL;
-//        } else if (isLocalHostRuntimeEnv()) {
-//            APPIUM_URL = LOCALHOST_APPIUM_URL;
-//        }
-//    }
-//    public static URL getAppiumUrl() throws MalformedURLException {
-//        if (Platform.getInstance().isLocalHostRuntimeEnv()) {
-//            return new URL("http://127.0.0.1:4723/");
-//        } else if (Platform.getInstance().isWindowsRuntimeEnv()) {
-//            return new URL("http://192.168.0.204:4723/");
-//        } else if (Platform.getInstance().isMacRuntimeEnv()) {
-//            return new URL("http://192.168.0.202:4723/");
-//        } else {
-//            throw new IllegalStateException("Unsupported runtime environment.");
-//        }
-//    }
+
 
 
     private static Boolean isPlatform(String expectedPlatform) {
@@ -83,6 +86,18 @@ public class Platform {
 
     public static String getAppiumUrlVar() {
         return APPIUM_URL;
+    }
+
+    public static String getBuildTypeVar() {
+        return BUILD_TYPE;
+    }
+
+    public static String getPlatformVersionVar() {
+        return PLATFORM_VERSION;
+    }
+
+    public static String getDeviceNameVar() {
+        return DEVICE_NAME;
     }
 
     public static Boolean isLocalHostRuntimeEnv() {

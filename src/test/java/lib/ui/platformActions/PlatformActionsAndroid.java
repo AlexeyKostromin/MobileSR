@@ -8,8 +8,7 @@ import lib.BasePage;
 
 import java.time.Duration;
 
-import static lib.DriverMobile.getAppPackage;
-import static lib.DriverMobile.getAppPath;
+import static lib.DriverMobile.*;
 
 public class PlatformActionsAndroid implements PlatformActionsStrategy {
     private AndroidDriver androidDriver;
@@ -48,7 +47,7 @@ public class PlatformActionsAndroid implements PlatformActionsStrategy {
         //Wait for the recent apps screen to open
         //TODO: replace sleep with check for the app is displayed/exist, and not exist after swipe
         try {
-            Thread.sleep(1000);
+            Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

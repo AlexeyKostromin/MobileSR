@@ -13,9 +13,9 @@ public class DashboardPageAndroid extends DashboardPage {
     }
 
     protected void initElements() {
-        WELCOME_PAGE_THE_FINAL_THIRD = $(id("@@@notImplementedYet"));
+        WELCOME_PAGE_THE_FINAL_THIRD = $(xpath("//android.widget.TextView[@text='THE FINAL THIRD']"));
         WELCOME_PAGE_SKIP_FOR_NOW = $(xpath("//*[@text='Skip for now']"));
-        WELCOME_PAGE_WELCOME_TO_THE_TEAM = $(id("@@@notImplementedYet"));
+        WELCOME_PAGE_WELCOME_TO_THE_TEAM = $(xpath("//android.widget.TextView[@text='WELCOME TO THE TEAM']"));
         WELCOME_PAGE_DRIVE_STRAIGHT_IT_BTN = $(id("DiveStraightInButton"));
         MAIN_MENU = $(id("drawerId"));
         SETTINGS = $(xpath("//*[@text='SETTINGS']"));

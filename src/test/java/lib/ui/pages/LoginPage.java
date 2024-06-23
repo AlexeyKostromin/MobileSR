@@ -165,7 +165,6 @@ public class LoginPage extends BasePage {
                 if (USER_NAME_TEXT_BOX.isDisplayed()) {
                     return;
                 } else if (CHROME_WELCOME_PAGE.isDisplayed()) {
-//                    chromeUseWithoutAccountSelect();
                     chromeAcceptTerms();
                     return;
                 }
@@ -200,7 +199,6 @@ public class LoginPage extends BasePage {
     private void chromeAcceptAndContinueSelect() {
         try {
             CHROME_ACCEPT_AND_CONTINUE_BTN.click();
-//            tryClickElementWithAttempts(CHROME_NO_THANKS_BTN, 5);
             CHROME_NO_THANKS_BTN.shouldBe(visible).click();
         } catch (Exception e) {
             System.err.println("Failed to click the 'Accept and Continue' button");
