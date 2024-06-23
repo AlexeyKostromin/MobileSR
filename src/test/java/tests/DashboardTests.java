@@ -1,11 +1,11 @@
 package tests;
 
-import lib.PageFactory;
-import lib.PlatformActions;
-import lib.ui.pages.DashboardPage;
-import lib.ui.pages.GamesPage;
-import lib.ui.pages.LoginPage;
-import lib.ui.player.Player;
+import mobile.factory.PageFactory;
+import mobile.platformActions.base.PlatformActions;
+import mobile.ui.pages.DashboardPage;
+import mobile.ui.pages.GamesPage;
+import mobile.ui.pages.LoginPage;
+import mobile.ui.player.Player;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

@@ -1,8 +1,8 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
-import lib.DriverMobile;
-import lib.Platform;
+import mobile.configs.DriverMobile;
+import mobile.configs.Platform;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
