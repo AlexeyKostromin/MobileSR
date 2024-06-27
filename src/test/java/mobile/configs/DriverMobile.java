@@ -29,7 +29,8 @@ public class DriverMobile implements WebDriverProvider {
     private static final String appActivityStaging = "com.sportradar.coaching.mobile.staging.MainActivity";
     private static final String appPackageLive = "com.sportradar.coaching.mobile";
     private static final String appActivityLive = "com.sportradar.coaching.mobile.MainActivity";
-
+    private static final String appNameAndroid = "com.sportradar.coaching.mobile-1.3.2-production-release.apk";
+    private static final String appNameIOS = "SynergySportsStaging-1.3.1.app";
 
     @Nonnull
     @Override
@@ -157,9 +158,6 @@ public class DriverMobile implements WebDriverProvider {
     private static String getAppPathLocal() {
         String appPath = "";
 
-        String appNameAndroid = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
-        String appNameIOS = "SynergySportsStaging-1.3.1.app";
-
         if (isAndroid()) {
             appPath = "src/test/resources/apps/" + appNameAndroid;
         } else if (isIOS()) {
@@ -176,8 +174,8 @@ public class DriverMobile implements WebDriverProvider {
     private static String getAppPathRemote() {
         String appPath = "";
 
-        String appNameAndroid = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
-        String appNameIOS = "SynergySportsStaging-1.3.1.app";
+//        String appNameAndroid = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
+//        String appNameIOS = "SynergySportsStaging-1.3.1.app";
 
         String localPathAndroid = "src/test/resources/apps/";
         String localPathIOS = "/Users/o.kostromin/@Builds/@workBuilds/";

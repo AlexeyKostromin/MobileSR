@@ -28,14 +28,14 @@ public class Platform {
     }
 
     //WINDOWS ANDROID
-    private void initConfig() {
-        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
-        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_LOCALHOST);
-        BUILD_TYPE = System.getProperty("buildType", "live");
-        PLATFORM_VERSION = System.getProperty("platformVersion", "13.0");
-        DEVICE_NAME = System.getProperty("deviceName", "Pixel7");
-        APPIUM_URL = System.getProperty("appiumURL", "http://127.0.0.1:4723/");
-    }
+//    private void initConfig() {
+//        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
+//        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_LOCALHOST);
+//        BUILD_TYPE = System.getProperty("buildType", "live");
+//        PLATFORM_VERSION = System.getProperty("platformVersion", "14.0");
+//        DEVICE_NAME = System.getProperty("deviceName", "Pixel7");
+//        APPIUM_URL = System.getProperty("appiumURL", "http://127.0.0.1:4723/");
+//    }
 
     //MAC IOS
 //    private void initConfig() {
@@ -49,15 +49,15 @@ public class Platform {
 //    }
 
     //MAC ANDROID
-//    private void initConfig() {
-//        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
-//        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
-//        BUILD_TYPE = System.getProperty("buildType", "live");
-//        PLATFORM_VERSION = System.getProperty("platformVersion", "14.0");
-//        DEVICE_NAME = System.getProperty("deviceName", "Pixel7");
+    private void initConfig() {
+        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
+        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
+        BUILD_TYPE = System.getProperty("buildType", "live");
+        PLATFORM_VERSION = System.getProperty("platformVersion", "14.0");
+        DEVICE_NAME = System.getProperty("deviceName", "Pixel7");
 //        APPIUM_URL = System.getProperty("appiumURL", "http://192.168.0.200:4723/");
-////        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.230:4723/");
-//    }
+        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.155:4723/");
+    }
 
 
 

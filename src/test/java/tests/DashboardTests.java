@@ -140,7 +140,7 @@ public class DashboardTests extends TestBase {
 //        String PASSWORD_STAGING = "Synergy2022@RANGe";
 
         PlatformActions platformActions = new PlatformActions();
-//        platformActions.installApp();
+        platformActions.installApp();
         platformActions.activateApp();
 
         LoginPage loginPage = PageFactory.getLoginPage();
