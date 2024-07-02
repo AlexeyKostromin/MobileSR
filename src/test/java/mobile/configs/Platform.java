@@ -49,16 +49,33 @@ public class Platform {
 //    }
 
     //MAC ANDROID
+//    private void initConfig() {
+//        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
+//        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
+//        BUILD_TYPE = System.getProperty("buildType", "live");
+//        PLATFORM_VERSION = System.getProperty("platformVersion", "14.0");
+//        DEVICE_NAME = System.getProperty("deviceName", "Pixel7");
+////        APPIUM_URL = System.getProperty("appiumURL", "http://192.168.0.200:4723/");
+//        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.155:4723/");
+//    }
+
+    //MAC BROWSERSTACK
     private void initConfig() {
         PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
         RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
         BUILD_TYPE = System.getProperty("buildType", "live");
         PLATFORM_VERSION = System.getProperty("platformVersion", "14.0");
-        DEVICE_NAME = System.getProperty("deviceName", "Pixel7");
-//        APPIUM_URL = System.getProperty("appiumURL", "http://192.168.0.200:4723/");
-        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.155:4723/");
+        DEVICE_NAME = System.getProperty("deviceName", "Pixel 8");
+//        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.155:4723/");
+        APPIUM_URL = System.getProperty("appiumURL", "https://" + "oleksiikostromin_jNdrmf" + "rD8W5YvpshBqq3buC7C2" + "@" + "hub.browserstack.com/wd/hub");
     }
-
+//    public static URL getBrowserstackUrl() {
+//        try {
+//            return new URL("https://" + browserstackConfigFull.userName + ":" + browserstackConfigFull.userKey + "@" + browserstackConfigFull.bsUrl);
+//        } catch (MalformedURLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
 
 

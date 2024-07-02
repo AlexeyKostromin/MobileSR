@@ -4,7 +4,6 @@ import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
-import mobile.configs.Platform;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -21,7 +20,7 @@ import static io.appium.java_client.remote.MobilePlatform.IOS;
 import static mobile.configs.Platform.*;
 
 
-public class DriverMobile implements WebDriverProvider {
+public class uDriverMobile implements WebDriverProvider {
     private static RemoteWebDriver driver;//? WebDriver was here before!
     private static UiAutomator2Options androidOptions;
     private static UiAutomator2Options IOSOptions;
@@ -76,34 +75,6 @@ public class DriverMobile implements WebDriverProvider {
         return driver;
     }
 
-    private UiAutomator2Options getOptionsAndroid1() {
-        UiAutomator2Options options = new UiAutomator2Options();
-        androidOptions = options;
-
-        options.setAutomationName(ANDROID_UIAUTOMATOR2)
-                .setPlatformName(ANDROID)
-                .setPlatformVersion(getPlatformVersionVar())
-                .setDeviceName(getDeviceNameVar())
-//                .noReset()
-                .setAvdLaunchTimeout(Duration.ofSeconds(60))   //wait until Android emulator is started
-                .setCapability("appium:disableIdLocatorAutocompletion", true);
-        return options;
-    }
-
-    private UiAutomator2Options getOptionsIOS() {
-        UiAutomator2Options options = new UiAutomator2Options();
-        IOSOptions = options;
-
-        options.setAutomationName(IOS_XCUI_TEST)
-                .setPlatformName(IOS)
-                .setPlatformVersion(getPlatformVersion())
-                .setDeviceName(getDeviceNameVar())
-                .noReset()
-                .setAvdLaunchTimeout(Duration.ofSeconds(30));   //wait until Android emulator is started
-//                .setCapability("appium:disableIdLocatorAutocompletion", true);
-        return options;
-    }
-
     private UiAutomator2Options getOptionsAndroid() {
         UiAutomator2Options options = new UiAutomator2Options();
         androidOptions = options;
@@ -112,19 +83,18 @@ public class DriverMobile implements WebDriverProvider {
                 .setPlatformName(ANDROID)
                 .setPlatformVersion("14.0")
                 .setDeviceName("Pixel 8")
-//                .setApp(getAppPath())
-                .setApp("bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c")
-//                .setAppPackage(appPackageLive)
-//                .setAppActivity(appActivityLive)
+                .setApp(getAppPath())
+                .setAppPackage(appPackageLive)
+                .setAppActivity(appActivityLive)
 //                .noReset()
                 .setAvdLaunchTimeout(Duration.ofSeconds(30))   //wait until Android emulator is started
-                .setNewCommandTimeout(Duration.ofSeconds(60)); // waits for a new command from your test script) before considering the session idle and potentially terminating it.
-//                .setCapability("appium:disableIdLocatorAutocompletion", true);
+                .setNewCommandTimeout(Duration.ofSeconds(60)) // waits for a new command from your test script) before considering the session idle and potentially terminating it.
+                .setCapability("appium:disableIdLocatorAutocompletion", true);
         return options;
     }
 
 
-    private UiAutomator2Options getOptionsIOS1() {
+    private UiAutomator2Options getOptionsIOS() {
         UiAutomator2Options options = new UiAutomator2Options();
         IOSOptions = options;
 
@@ -175,6 +145,9 @@ public class DriverMobile implements WebDriverProvider {
     private static String getAppPathRemote() {
         String appPath = "";
 
+//        String appNameAndroid = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
+//        String appNameIOS = "SynergySportsStaging-1.3.1.app";
+
         String localPathAndroid = "src/test/resources/apps/";
         String localPathIOS = "/Users/o.kostromin/@Builds/@workBuilds/";
 
@@ -198,4 +171,21 @@ public class DriverMobile implements WebDriverProvider {
     }
 
 
+//    private String getAppPath() {
+//        String appVersion = "com.sportradar.coaching.mobile-1.2.4-production-release.apk";
+////        String appVersion = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
+////        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia" +
+////                "/releases/download/latest/" + appVersion;
+//        String appPath = "src/test/resources/apps/" + appVersion;
+//
+//        File app = new File(appPath);
+////        if (!app.exists()) {
+////            try (InputStream in = new URL(appUrl).openStream()) {
+////                copyInputStreamToFile(in, app);
+////            } catch (IOException e) {
+////                throw new AssertionError("Failed to download application", e);
+////            }
+////        }
+//        return app.getAbsolutePath();
+//    }
 }
