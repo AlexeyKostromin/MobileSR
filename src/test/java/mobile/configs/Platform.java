@@ -62,12 +62,14 @@ public class Platform {
     //MAC BROWSERSTACK
     private void initConfig() {
         PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
-        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
-        BUILD_TYPE = System.getProperty("buildType", "live");
-        PLATFORM_VERSION = System.getProperty("platformVersion", "14.0");
-        DEVICE_NAME = System.getProperty("deviceName", "Pixel 8");
+//        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
+//        BUILD_TYPE = System.getProperty("buildType", "live");
+        PLATFORM_VERSION = System.getProperty("platformVersion", "9.0");
+        DEVICE_NAME = System.getProperty("deviceName", "Google Pixel 3");
 //        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.155:4723/");
-        APPIUM_URL = System.getProperty("appiumURL", "https://" + "oleksiikostromin_jNdrmf" + "rD8W5YvpshBqq3buC7C2" + "@" + "hub.browserstack.com/wd/hub");
+//        APPIUM_URL = System.getProperty("appiumURL", "https://" + "oleksiikostromin_jNdrmf" + ":" + "rD8W5YvpshBqq3buC7C2" + "@" + "hub.browserstack.com/wd/hub");
+        APPIUM_URL = System.getProperty("appiumURL", "https://" + "alexq_SgYyvP" + ":" + "wnUAtVceBCst1TsscWax" + "@" + "hub.browserstack.com/wd/hub");
+
     }
 //    public static URL getBrowserstackUrl() {
 //        try {

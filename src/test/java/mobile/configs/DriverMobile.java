@@ -108,20 +108,37 @@ public class DriverMobile implements WebDriverProvider {
         UiAutomator2Options options = new UiAutomator2Options();
         androidOptions = options;
 
-        options.setAutomationName(ANDROID_UIAUTOMATOR2)
-                .setPlatformName(ANDROID)
-                .setPlatformVersion("14.0")
-                .setDeviceName("Pixel 8")
-//                .setApp(getAppPath())
-                .setApp("bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c")
+        options
+                .setPlatformVersion(getPlatformVersionVar())
+                .setDeviceName(getDeviceNameVar())
+                .setApp("bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c");
 //                .setAppPackage(appPackageLive)
 //                .setAppActivity(appActivityLive)
 //                .noReset()
-                .setAvdLaunchTimeout(Duration.ofSeconds(30))   //wait until Android emulator is started
-                .setNewCommandTimeout(Duration.ofSeconds(60)); // waits for a new command from your test script) before considering the session idle and potentially terminating it.
+//                .setAvdLaunchTimeout(Duration.ofSeconds(30))   //wait until Android emulator is started
+//                .setNewCommandTimeout(Duration.ofSeconds(60)); // waits for a new command from your test script) before considering the session idle and potentially terminating it.
 //                .setCapability("appium:disableIdLocatorAutocompletion", true);
         return options;
     }
+
+//    private UiAutomator2Options getOptionsAndroid() {
+//        UiAutomator2Options options = new UiAutomator2Options();
+//        androidOptions = options;
+//
+//        options.setAutomationName(ANDROID_UIAUTOMATOR2)
+//                .setPlatformName(ANDROID)
+//                .setPlatformVersion("14.0")
+//                .setDeviceName("Pixel 8")
+////                .setApp(getAppPath())
+//                .setApp("bs://c700ce60cf13ae8ed97705a55b8e022f13c5827c")
+////                .setAppPackage(appPackageLive)
+////                .setAppActivity(appActivityLive)
+////                .noReset()
+//                .setAvdLaunchTimeout(Duration.ofSeconds(30))   //wait until Android emulator is started
+//                .setNewCommandTimeout(Duration.ofSeconds(60)); // waits for a new command from your test script) before considering the session idle and potentially terminating it.
+////                .setCapability("appium:disableIdLocatorAutocompletion", true);
+//        return options;
+//    }
 
 
     private UiAutomator2Options getOptionsIOS1() {
