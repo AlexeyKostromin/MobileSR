@@ -1,18 +1,27 @@
 package mobile.configs;
 
+import lombok.Getter;
+
+import java.io.InputStream;
+import java.util.Properties;
+
+
 public class Platform {
-    private static String PLATFORM;
-    private static String RUNTIME_ENV;
-    private static String APPIUM_URL;
+    private static String platform;
+    private static String runtimeEnv;
+    private static String appiumUrl;
     private final static String PLATFORM_ANDROID = "android";
     private final static String PLATFORM_IOS = "ios";
-    private static String BUILD_TYPE;
-    private static String PLATFORM_VERSION;
-    private static String DEVICE_NAME;
-    private final static String RUNTIME_ENV_LOCALHOST = "localHostRuntimeEnv";
-    private final static String RUNTIME_ENV_WINDOWS = "windowsRuntimeEnv";
-    private final static String RUNTIME_ENV_MAC = "macRuntimeEnv";
-    private final static String MAC_APPIUM_URL = "http://192.168.0.202:4723/";
+    private static String buildType;
+    @Getter
+    private static String platformVersion;
+    @Getter
+    private static String deviceName;
+
+//    private final static String RUNTIME_ENV_LOCALHOST = "localHostRuntimeEnv";
+//    private final static String RUNTIME_ENV_WINDOWS = "windowsRuntimeEnv";
+//    private final static String RUNTIME_ENV_MAC = "macRuntimeEnv";
+//    private final static String MAC_APPIUM_URL = "http://192.168.0.202:4723/";
 
     private static Platform instance;
 
@@ -27,62 +36,34 @@ public class Platform {
         return instance;
     }
 
-    //WINDOWS ANDROID
-//    private void initConfig() {
-//        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
-//        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_LOCALHOST);
-//        BUILD_TYPE = System.getProperty("buildType", "live");
-//        PLATFORM_VERSION = System.getProperty("platformVersion", "14.0");
-//        DEVICE_NAME = System.getProperty("deviceName", "Pixel7");
-//        APPIUM_URL = System.getProperty("appiumURL", "http://127.0.0.1:4723/");
-//    }
+    static Properties config = new Properties();
 
-    //MAC IOS
-//    private void initConfig() {
-//        PLATFORM = System.getProperty("platform", PLATFORM_IOS);
-//        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
-//        BUILD_TYPE = System.getProperty("buildType", "staring");
-//        PLATFORM_VERSION = System.getProperty("platformVersion", "17.5");
-//        DEVICE_NAME = System.getProperty("deviceName", "iPhone 15");
-//        APPIUM_URL = System.getProperty("appiumURL", "http://192.168.0.200:4723/");
-////        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.230:4723/");
-//    }
-
-    //MAC ANDROID
-//    private void initConfig() {
-//        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
-//        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
-//        BUILD_TYPE = System.getProperty("buildType", "live");
-//        PLATFORM_VERSION = System.getProperty("platformVersion", "14.0");
-//        DEVICE_NAME = System.getProperty("deviceName", "Pixel7");
-////        APPIUM_URL = System.getProperty("appiumURL", "http://192.168.0.200:4723/");
-//        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.155:4723/");
-//    }
-
-    //MAC BROWSERSTACK
-    private void initConfig() {
-        PLATFORM = System.getProperty("platform", PLATFORM_ANDROID);
-//        RUNTIME_ENV = System.getProperty("runtimeEnv", RUNTIME_ENV_MAC);
-//        BUILD_TYPE = System.getProperty("buildType", "live");
-        PLATFORM_VERSION = System.getProperty("platformVersion", "9.0");
-        DEVICE_NAME = System.getProperty("deviceName", "Google Pixel 3");
-//        APPIUM_URL = System.getProperty("appiumURL", "http://10.17.141.155:4723/");
-//        APPIUM_URL = System.getProperty("appiumURL", "https://" + "oleksiikostromin_jNdrmf" + ":" + "rD8W5YvpshBqq3buC7C2" + "@" + "hub.browserstack.com/wd/hub");
-        APPIUM_URL = System.getProperty("appiumURL", "https://" + "alexq_SgYyvP" + ":" + "wnUAtVceBCst1TsscWax" + "@" + "hub.browserstack.com/wd/hub");
-
+    static {
+        try (InputStream input = Platform.class.getClassLoader().getResourceAsStream("config.ios.properties")) {
+            if (input == null) {
+//                log.error("Unable to find config file");
+            }
+            config.load(input);
+        } catch (Exception e){
+//            log.error("Failed load configuration", e);
+            throw new ExceptionInInitializerError();
+        }
     }
-//    public static URL getBrowserstackUrl() {
-//        try {
-//            return new URL("https://" + browserstackConfigFull.userName + ":" + browserstackConfigFull.userKey + "@" + browserstackConfigFull.bsUrl);
-//        } catch (MalformedURLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+
+    //MAC IOS FROM FILE
+    private void initConfig() {
+        platform = System.getProperty("platform", config.getProperty("platform"));
+        runtimeEnv = System.getProperty("runtimeEnv", config.getProperty("runtimeEnv"));
+        buildType = System.getProperty("buildType", config.getProperty("buildType"));
+        platformVersion = System.getProperty("platformVersion", config.getProperty("platformVersion"));
+        deviceName = System.getProperty("deviceName", config.getProperty("deviceName"));
+        appiumUrl = System.getProperty("appiumURL", config.getProperty("appiumURL"));
+    }
 
 
 
     private static Boolean isPlatform(String expectedPlatform) {
-        return PLATFORM.equals(expectedPlatform);
+        return platform.equals(expectedPlatform);
     }
 
     public static Boolean isAndroid() {
@@ -94,27 +75,27 @@ public class Platform {
     }
 
     private static Boolean isRuntimeEnv(String expectedRuntimeEnv) {
-        return RUNTIME_ENV.equals(expectedRuntimeEnv);
+        return runtimeEnv.equals(expectedRuntimeEnv);
     }
 
     public static String getRuntimeEnvVar() {
-        return RUNTIME_ENV;
+        return runtimeEnv;
     }
 
     public static String getAppiumUrlVar() {
-        return APPIUM_URL;
+        return appiumUrl;
     }
 
     public static String getBuildTypeVar() {
-        return BUILD_TYPE;
+        return buildType;
     }
 
     public static String getPlatformVersionVar() {
-        return PLATFORM_VERSION;
+        return platformVersion;
     }
 
     public static String getDeviceNameVar() {
-        return DEVICE_NAME;
+        return deviceName;
     }
 
     public static Boolean isLocalHostRuntimeEnv() {

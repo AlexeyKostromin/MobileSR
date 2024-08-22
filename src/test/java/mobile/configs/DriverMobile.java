@@ -4,7 +4,6 @@ import com.codeborne.selenide.WebDriverProvider;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
-import mobile.configs.Platform;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -20,6 +19,7 @@ import static io.appium.java_client.remote.MobilePlatform.ANDROID;
 import static io.appium.java_client.remote.MobilePlatform.IOS;
 import static mobile.configs.Platform.*;
 
+//import static mobile.configs.Platform.getPlatformVersion;
 
 public class DriverMobile implements WebDriverProvider {
     private static RemoteWebDriver driver;//? WebDriver was here before!
@@ -79,11 +79,11 @@ public class DriverMobile implements WebDriverProvider {
     private UiAutomator2Options getOptionsAndroid1() {
         UiAutomator2Options options = new UiAutomator2Options();
         androidOptions = options;
-
+        ;
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
                 .setPlatformName(ANDROID)
-                .setPlatformVersion(getPlatformVersionVar())
-                .setDeviceName(getDeviceNameVar())
+                .setPlatformVersion(getPlatformVersion())
+                .setDeviceName(getDeviceName())
 //                .noReset()
                 .setAvdLaunchTimeout(Duration.ofSeconds(60))   //wait until Android emulator is started
                 .setCapability("appium:disableIdLocatorAutocompletion", true);
