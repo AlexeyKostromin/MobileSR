@@ -47,14 +47,14 @@ public class DriverMobile implements WebDriverProvider {
         return IOSOptions;
     }
 
-    public static String getPlatformVersion() {
-        var buildType = getPlatformVersionVar();
-        if (buildType.equals("staging")) {
-            return appPackageStaging;
-        } else if (buildType.equals("live")) {
-            return appPackageLive;
-        } else throw new RuntimeException("Could not define appPackage");
-    }
+//    public static String getPlatformVersion() {
+//        var buildType = getPlatformVersionVar();
+//        if (buildType.equals("staging")) {
+//            return appPackageStaging;
+//        } else if (buildType.equals("live")) {
+//            return appPackageLive;
+//        } else throw new RuntimeException("Could not define appPackage");
+//    }
 
     public static String getAppPackage() {
         var buildType = getBuildTypeVar();
@@ -96,7 +96,7 @@ public class DriverMobile implements WebDriverProvider {
 
         options.setAutomationName(IOS_XCUI_TEST)
                 .setPlatformName(IOS)
-                .setPlatformVersion(getPlatformVersion())
+                .setPlatformVersion(getPlatformVersionVar())
                 .setDeviceName(getDeviceNameVar())
                 .noReset()
                 .setAvdLaunchTimeout(Duration.ofSeconds(30));   //wait until Android emulator is started
