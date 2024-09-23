@@ -17,16 +17,6 @@ import static mobile.configs.Platform.isIOS;
 
 public class PageFactory {
 
-//    public static PlatformActions getBasePage() {
-//        if (isAndroid()) {
-//            return new PlatformActions(this);
-//        } else if (isIOS()) {
-//            return new PlatformActions(this);
-//        } else {
-//            throw new IllegalStateException("Unsupported platform");
-//        }
-//    }
-
     public static LoginPage getLoginPage() {
         if (isAndroid()) {
             return new LoginPageAndroid();

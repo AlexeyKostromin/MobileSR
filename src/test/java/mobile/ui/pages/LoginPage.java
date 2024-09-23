@@ -29,7 +29,7 @@ public class LoginPage extends BasePage {
 
 
     protected String getCurrentVersion() {
-        return null;
+        throw new UnsupportedOperationException("Use overrides in subclasses");
     }
 
     public DashboardPage loginWithCredentials(String userName, String password) {

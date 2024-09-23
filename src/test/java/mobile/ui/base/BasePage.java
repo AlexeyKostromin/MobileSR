@@ -20,6 +20,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class BasePage {
     protected static RemoteWebDriver driver;
     public static PlatformActions platformActions;
+
 //    public static BasePage basePage;
 
 //    private static BasePage instance;
@@ -51,7 +52,7 @@ public class BasePage {
         element.shouldBe(Condition.exist);
         while (currentAttempts < attempts) {
             try {
-                WebElement webElement = element.toWebElement();
+                WebElement webElement = element.toWebElement();// selenide element -> web element
 
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
                 wait.until(ExpectedConditions.elementToBeClickable(webElement));
@@ -84,7 +85,6 @@ public class BasePage {
                 .addAction(finger.createPointerMove(Duration.ofMillis(timeOfScroll), PointerInput.Origin.viewport(), centerX, endY))
                 .addAction(finger.createPointerUp(0));
 
-//        driver.perform(Arrays.asList(swipe));
         driver.perform(Collections.singletonList(swipe));
     }
 

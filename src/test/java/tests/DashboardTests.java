@@ -34,9 +34,6 @@ public class DashboardTests extends TestBase {
         Player player = new Player();
         player.pause();
 
-//        homePageSr.goToProfileSettings();
-//        homePageSr.setSportBasketball();
-//        homePageSr.goBackToDashboardPage();
     }
     @Test
     @Tag("android_local")
@@ -44,7 +41,6 @@ public class DashboardTests extends TestBase {
     void LaunchAppTest() {
         LoginPage loginPage = PageFactory.getLoginPage();
         DashboardPage dashboardPage = PageFactory.getDashboardPage();
-//        loginPage.allowPermissions();//move to method launch app
 
         loginPage.updateApp();
 
@@ -65,13 +61,9 @@ public class DashboardTests extends TestBase {
     @Tag("android_local")
     @DisplayName("Launch app")
     void AttachToAppTest() {
-        LoginPage loginPage = PageFactory.getLoginPage();
-//        loginPage.updateApp();
-//        DashboardPage dashboardPage = loginPage.loginWithCredentials(USERNAME, PASSWORD);
         DashboardPage dashboardPage = PageFactory.getDashboardPage();
         dashboardPage.skipIntro();
 
-//        DashboardPage dashboardPage = PageFactory.getDashboardPage();
         GamesPage gamesPage = dashboardPage.openGames();
 
         gamesPage.selectAllGames();
@@ -136,9 +128,6 @@ public class DashboardTests extends TestBase {
     @Tag("android_remote")
     @DisplayName("Launch app Android on MAC")
     void LaunchAppAndroidOnMacTest() {
-//        String USERNAME_STAGING = "hawks_staffmax@mailinator.com";
-//        String PASSWORD_STAGING = "Synergy2022@RANGe";
-
         PlatformActions platformActions = new PlatformActions();
         platformActions.installApp();
         platformActions.activateApp();

@@ -22,7 +22,7 @@ import static mobile.configs.Platform.*;
 
 
 public class DriverMobile implements WebDriverProvider {
-    private static RemoteWebDriver driver;//? WebDriver was here before!
+    private static RemoteWebDriver driver;
     private static UiAutomator2Options androidOptions;
     private static UiAutomator2Options IOSOptions;
     private static final String appPackageStaging = "com.sportradar.coaching.mobile.staging";
@@ -36,15 +36,6 @@ public class DriverMobile implements WebDriverProvider {
     @Override
     public RemoteWebDriver createDriver(@Nonnull Capabilities capabilities) {
         return initDriver();
-    }
-
-
-    public static UiAutomator2Options getAndroidOptions() {
-        return androidOptions;
-    }
-
-    public static UiAutomator2Options getIOSOptions() {
-        return IOSOptions;
     }
 
     public static String getPlatformVersion() {
@@ -122,23 +113,6 @@ public class DriverMobile implements WebDriverProvider {
         return options;
     }
 
-
-    private UiAutomator2Options getOptionsIOS1() {
-        UiAutomator2Options options = new UiAutomator2Options();
-        IOSOptions = options;
-
-        options.setAutomationName(IOS_XCUI_TEST)
-                .setPlatformName(IOS)
-                .setPlatformVersion("17.5")
-                .setDeviceName("iPhone 15")
-                .setApp(getAppPath())
-                .setAppPackage(appPackageLive)
-                .setAppActivity(appActivityLive)
-                .setAvdLaunchTimeout(Duration.ofSeconds(30));   //wait until Android emulator is started
-//                .setCapability("appium:disableIdLocatorAutocompletion", true);
-        return options;
-    }
-
     public static URL getAppiumServerUrl() {
         try {
             return new URL(Platform.getAppiumUrlVar());
@@ -174,9 +148,6 @@ public class DriverMobile implements WebDriverProvider {
     private static String getAppPathRemote() {
         String appPath = "";
 
-//        String appNameAndroid = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
-//        String appNameIOS = "SynergySportsStaging-1.3.1.app";
-
         String localPathAndroid = "src/test/resources/apps/";
         String localPathIOS = "/Users/o.kostromin/@Builds/@workBuilds/";
 
@@ -192,29 +163,7 @@ public class DriverMobile implements WebDriverProvider {
             appPath = localPathAndroid + appNameIOS;
         }
 
-        File app = new File(appPath);
-//        if (!app.exists()) {
-//            throw new AssertionError("Failed to get application from: " + appPath);
-//        }
         return appPath;
     }
 
-
-//    private String getAppPath() {
-//        String appVersion = "com.sportradar.coaching.mobile-1.2.4-production-release.apk";
-////        String appVersion = "com.sportradar.coaching.mobile-1.3.1-production-release.apk";
-////        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia" +
-////                "/releases/download/latest/" + appVersion;
-//        String appPath = "src/test/resources/apps/" + appVersion;
-//
-//        File app = new File(appPath);
-////        if (!app.exists()) {
-////            try (InputStream in = new URL(appUrl).openStream()) {
-////                copyInputStreamToFile(in, app);
-////            } catch (IOException e) {
-////                throw new AssertionError("Failed to download application", e);
-////            }
-////        }
-//        return app.getAbsolutePath();
-//    }
 }

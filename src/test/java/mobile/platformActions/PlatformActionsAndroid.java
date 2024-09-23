@@ -51,7 +51,6 @@ public class PlatformActionsAndroid implements PlatformActionsStrategy {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-//        BasePage.swipeUpQuick();
         BasePage.swipeUp(500);
 
         androidDriver.pressKey(new KeyEvent(AndroidKey.HOME));
